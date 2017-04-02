@@ -8,6 +8,6 @@ namespace Server
 {
     public interface ICommand
     {
-        void Execute(int id, string parameters);
+        string Execute(int id, string parameters);
     }
 }

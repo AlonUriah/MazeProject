@@ -27,7 +27,7 @@ namespace Server
             string parameters = command.Substring(cmdIndex + 1, command.Length - cmdIndex - 1);
 
             // Execute the correct command
-            this.commands[cmd].Execute(id, parameters);
+            return this.commands[cmd].Execute(id, parameters);
         }
     }
 }

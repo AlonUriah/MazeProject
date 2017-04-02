@@ -25,11 +25,12 @@ namespace Server
             this.games = new Dictionary<string, Game>();
         }
         
-        public void AddMaze(string name, int rows, int cols)
+        public Maze AddMaze(string name, int rows, int cols)
         {
             lock (this.mazes_locker)
             {
                 this.mazes.Add(name, new Maze(rows, cols) { Name = name });
+                return this.mazes[name];
             }
         }
 
