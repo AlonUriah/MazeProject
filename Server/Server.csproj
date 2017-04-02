@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
     <Compile Include="CloseCommand.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Game.cs" />

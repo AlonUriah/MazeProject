@@ -12,9 +12,9 @@ namespace Server
         {
 
         }
-        public void Execute()
+        public void Execute(int id, string parameters)
         {
-
+            
         }
     }
 }

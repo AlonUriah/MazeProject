@@ -16,7 +16,7 @@ namespace Server
             this.model = model;
             this.commands = new Dictionary<string, ICommand>();
         }
-        public string ApplyCommand(string command)
+        public string ApplyCommand(int id, string command)
         {
             // Calculate the index of the first space
             int cmdIndex = command.IndexOf(' ');
@@ -27,7 +27,7 @@ namespace Server
             string parameters = command.Substring(cmdIndex + 1, command.Length - cmdIndex - 1);
 
             // Execute the correct command
-            this.commands[cmd].Execute(parameters);
+            this.commands[cmd].Execute(id, parameters);
         }
     }
 }

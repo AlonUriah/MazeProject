@@ -8,7 +8,7 @@ namespace Server
 {
     public interface IController
     {
-        string ApplyCommand(string command);
+        string ApplyCommand(int id, string command);
         
     }
 }

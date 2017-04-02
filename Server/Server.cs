@@ -15,14 +15,18 @@ namespace Server
     {
         private IController controller;
         private Model model;
-
-        private List<TcpClient> clients;
+        
+        private List<Client> clients;
         private TcpListener listener;
         private int port;
         private NetworkStream ns;
         private StreamReader sr;
         private StreamWriter sw;
         private bool isOnline;
+
+        private int ClientCounter;
+
+        private readonly object clients_locker = new object();
 
         public Server(int port)
         {
@@ -31,8 +35,10 @@ namespace Server
 
             this.port = port;
             this.listener = new TcpListener(new IPEndPoint(IPAddress.Parse("localhost"), port));
-            this.clients = new List<TcpClient>();
-            this.isOnline = false;            
+            this.clients = new List<Client>();
+            this.isOnline = false;
+
+            this.ClientCounter = 0;
         }
         public void Start()
         {
@@ -51,6 +57,15 @@ namespace Server
             while (this.isOnline)
             {
                 TcpClient currentClient = this.listener.AcceptTcpClient();
+                Client client = null;
+                
+                lock (this.clients_locker)
+                {
+                    client = new Client(this.ClientCounter, currentClient);
+                    this.clients.Add(client);
+                    this.ClientCounter++;
+                }
+
                 Task.Factory.StartNew(() =>
                 {
                     bool ClientConnected = true;
@@ -66,7 +81,7 @@ namespace Server
                             string cmd = sr.ReadLine();
 
                             // Apply it by the controller and get the output as json
-                            string json = this.controller.ApplyCommand(cmd);
+                            string json = this.controller.ApplyCommand(client.Id, cmd);
 
                             // Send the json's output back to the client
                             if (json != "")
@@ -75,7 +90,16 @@ namespace Server
                         catch (Exception ex)
                         {
                             ClientConnected = false;
+                            sr.Close();
+                            sw.Close();
+                            ns.Close();
+
                             Console.WriteLine(ex.Message);
+                            
+                            lock (this.clients_locker)
+                            {
+                                this.clients.Remove(client);
+                            }
                         }
                     }
                 });
