@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,6 @@ namespace Server
 {
     public interface ICommand
     {
-        string Execute(int id, string parameters);
+        void Execute(Player client, string parameters);
     }
 }

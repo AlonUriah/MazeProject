@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +10,7 @@ namespace Server
 {
     public class Controller : IController
     {
+        
         private Model model;
         private Dictionary<string, ICommand> commands;
 
@@ -16,7 +19,7 @@ namespace Server
             this.model = model;
             this.commands = new Dictionary<string, ICommand>();
         }
-        public string ApplyCommand(int id, string command)
+        public void ApplyCommand(Player client, string command)
         {
             // Calculate the index of the first space
             int cmdIndex = command.IndexOf(' ');
@@ -27,7 +30,7 @@ namespace Server
             string parameters = command.Substring(cmdIndex + 1, command.Length - cmdIndex - 1);
 
             // Execute the correct command
-            return this.commands[cmd].Execute(id, parameters);
+            this.commands[cmd].Execute(client, parameters);
         }
     }
 }

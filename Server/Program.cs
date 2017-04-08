@@ -11,22 +11,10 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            Task t = Task.Factory.StartNew(() =>
-            {
-                while (true)
-                {
-                    Thread.Sleep(2000);
-                    Console.WriteLine("Waiting 2 seconds...");
-                }
-            });
-            Task e = Task.Factory.StartNew(() =>
-            {
-                while (true)
-                {
-                    Thread.Sleep(3000);
-                    Console.WriteLine("Waiting 3 seconds...");
-                }
-            });
+            Model m = new Model();
+            ListCommand ls = new ListCommand(m);
+            
+            
             Console.ReadKey();
         }
     }

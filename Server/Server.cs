@@ -16,7 +16,7 @@ namespace Server
         private IController controller;
         private Model model;
         
-        private List<Client> clients;
+        private List<Player> clients;
         private TcpListener listener;
         private int port;
         private NetworkStream ns;
@@ -24,7 +24,7 @@ namespace Server
         private StreamWriter sw;
         private bool isOnline;
 
-        private int ClientCounter;
+        private int clients_id;
 
         private readonly object clients_locker = new object();
 
@@ -35,10 +35,10 @@ namespace Server
 
             this.port = port;
             this.listener = new TcpListener(new IPEndPoint(IPAddress.Parse("localhost"), port));
-            this.clients = new List<Client>();
+            this.clients = new List<Player>();
             this.isOnline = false;
 
-            this.ClientCounter = 0;
+            this.clients_id = 0;
         }
         public void Start()
         {
@@ -57,13 +57,13 @@ namespace Server
             while (this.isOnline)
             {
                 TcpClient currentClient = this.listener.AcceptTcpClient();
-                Client client = null;
+                Player client = null;
                 
                 lock (this.clients_locker)
                 {
-                    client = new Client(this.ClientCounter, currentClient);
+                    client = new Player(this.clients_id, currentClient);
                     this.clients.Add(client);
-                    this.ClientCounter++;
+                    this.clients_id++;
                 }
 
                 Task.Factory.StartNew(() =>
@@ -80,12 +80,9 @@ namespace Server
                             // Get a command from the client
                             string cmd = sr.ReadLine();
 
-                            // Apply it by the controller and get the output as json
-                            string json = this.controller.ApplyCommand(client.Id, cmd);
+                            // Apply it by the controller
+                            this.controller.ApplyCommand(client, cmd);
 
-                            // Send the json's output back to the client
-                            if (json != "")
-                                sw.WriteLine(json);
                         }
                         catch (Exception ex)
                         {
