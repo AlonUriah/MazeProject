@@ -14,7 +14,7 @@ namespace Server
     public class Server
     {
         private IController controller;
-        private Model model;
+        private IModel model;
         
         private List<Player> clients;
         private TcpListener listener;

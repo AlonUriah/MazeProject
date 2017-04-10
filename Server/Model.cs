@@ -9,18 +9,20 @@ using System.Net.Sockets;
 
 namespace Server
 {
-    public class Model
+    public class Model : IModel
     {
-        private List<Game> games;
+        private Dictionary<string, Game> games;
         private Dictionary<Player[], string> players;
+        private DFSMazeGenerator mazer;
 
         private readonly object games_locker = new object();
         private readonly object players_locker = new object();
 
         public Model()
         {
-            this.games = new List<Game>();
+            this.games = new Dictionary<string, Game>();
             this.players = new Dictionary<Player[], string>();
+            this.mazer = new DFSMazeGenerator();
         }
         public List<string> GetAvailableGames()
         {
@@ -28,7 +30,7 @@ namespace Server
 
             lock (this.games_locker)
             {
-                foreach (Game game in this.games)
+                foreach (Game game in this.games.Values)
                     if (!game.isFull())
                         list.Add(game.Name);
             }
@@ -41,12 +43,15 @@ namespace Server
             lock (this.games_locker)
             {
                 // Check for existing game
-                foreach (Game game in this.games)
+                foreach (Game game in this.games.Values)
                     if (game.Name == name)
                         return null;
 
-                Game result = new SinglePlayerGame(name, new Maze(rows, cols) { Name = name });
-                this.games.Add(result);
+                Maze maze = this.mazer.Generate(rows, cols);
+                maze.Name = name;
+
+                Game result = new SinglePlayerGame(name,  maze);
+                this.games.Add(name, result);
                 return result;
             }
         }
@@ -56,7 +61,7 @@ namespace Server
             lock (this.games_locker)
             {
                 // Check for existing game
-                foreach (Game game in this.games)
+                foreach (Game game in this.games.Values)
                     if (game.Name == name)
                         return null;
 
@@ -69,8 +74,11 @@ namespace Server
                 this.players.Add(new Player[] { client, null }, name);
 
                 // If validation passed - add the game.
-                Game result = new MultiPlayerGame(name, new Maze(rows, cols) { Name = name });
-                this.games.Add(result);
+                Maze maze = this.mazer.Generate(rows, cols);
+                maze.Name = name;
+
+                Game result = new MultiPlayerGame(name, maze);
+                this.games.Add(name, result);
 
                 // Return a json representation of the game.
                 return result;
@@ -83,24 +91,20 @@ namespace Server
 
             lock (this.games_locker)
             {
-                foreach (Game game in this.games)
-                    if (game.Name == name)
-                    { 
-                        this.games.Remove(game);
+                this.games.Remove(name);
 
-                        lock (this.players_locker)
+                lock (this.players_locker)
+                {
+                    foreach (Player[] clients in this.players.Keys)
+                        if (this.players[clients] == name)
                         {
-                            foreach (Player[] clients in this.players.Keys)
-                                if (this.players[clients] == name)
-                                {
-                                    players_arr = clients;
-                                    this.players.Remove(clients);
-                                    break;
-                                }
+                            players_arr = clients;
+                            this.players.Remove(clients);
+                            break;
                         }
-                        break;
-                    }
+                }
             }
+
 
             return players_arr;
         }
@@ -116,42 +120,39 @@ namespace Server
 
                         lock (this.games_locker)
                         {
-                            foreach (Game game in this.games)
-                                if (game.Name == name)
-                                {
-                                    game.Ready = true;
-                                    return game;
-                                }
+                            this.games[name].Ready = true;
+                            return this.games[name];
                         }
                     }
             }
+
             return null;
         }
 
         public Player GetRival(Player player)
+    {
+        lock (this.players_locker)
         {
-            lock (this.players_locker)
+            foreach (Player[] pl in this.players.Keys)
             {
-                foreach (Player[] pl in this.players.Keys)
-                {
-                    if (pl[0].Id == player.Id)
-                        return pl[0];
-                    if (pl[1].Id == player.Id)
-                        return pl[1];
-                }
+                if (pl[0].Id == player.Id)
+                    return pl[0];
+                if (pl[1].Id == player.Id)
+                    return pl[1];
             }
-            return null;
         }
+        return null;
+    }
 
         public string GetGame(Player player)
+    {
+        lock (this.players_locker)
         {
-            lock (this.players_locker)
-            {
-                foreach (Player[] pl in this.players.Keys)
-                    if (pl[0].Id == player.Id || pl[1].Id == player.Id)
-                        return this.players[pl];
-            }
-            return null;
+            foreach (Player[] pl in this.players.Keys)
+                if (pl[0].Id == player.Id || pl[1].Id == player.Id)
+                    return this.players[pl];
         }
+        return null;
+    }
     }
 }

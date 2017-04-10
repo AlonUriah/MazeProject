@@ -11,10 +11,10 @@ namespace Server
     public class Controller : IController
     {
         
-        private Model model;
+        private IModel model;
         private Dictionary<string, ICommand> commands;
 
-        public Controller(Model model)
+        public Controller(IModel model)
         {
             this.model = model;
             this.commands = new Dictionary<string, ICommand>();
