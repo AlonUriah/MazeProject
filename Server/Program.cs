@@ -12,8 +12,10 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            Model m = new Model();
-            ListCommand ls = new ListCommand(m);
+            Game game = new SinglePlayerGame("Hello", new DFSMazeGenerator().Generate(5, 7));
+
+            Console.WriteLine(game.ToJSON());
+
 
             Console.ReadKey();
         }

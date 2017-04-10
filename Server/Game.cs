@@ -12,7 +12,9 @@ namespace Server
 {
     public abstract class Game
     {
-        private readonly object ready_locker = new object();
+        protected readonly object ready_locker = new object();
+
+        private bool ready;
 
         public string Name { get; private set; }
         public Maze Maze { get; private set; }
@@ -21,14 +23,14 @@ namespace Server
             {
                 lock (this.ready_locker)
                 {
-                    return Ready;
+                    return this.ready;
                 }
             }
             set
             {
                 lock (this.ready_locker)
                 {
-                    Ready = value;
+                    this.ready = value;
                 }
             }
         } 
