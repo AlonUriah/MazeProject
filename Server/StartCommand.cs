@@ -10,7 +10,7 @@ namespace Server
 {
     public class StartCommand : Command
     {
-        public StartCommand(Model model) : base(model)
+        public StartCommand(IModel model) : base(model)
         {
         }
 

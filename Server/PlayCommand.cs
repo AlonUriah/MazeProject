@@ -10,7 +10,7 @@ namespace Server
 {
     public class PlayCommand : Command
     {
-        public PlayCommand(Model model) : base(model)
+        public PlayCommand(IModel model) : base(model)
         {
         }
 
@@ -21,14 +21,20 @@ namespace Server
             // Get data by model
             Player rival = this.model.GetRival(client);
             string game_name = this.model.GetGame(client);
+            try
+            {
+                // Serialize the move to json
+                JObject move = new JObject();
+                move["Name"] = game_name;
+                move["Direction"] = direction;
 
-            // Serialize the move to json
-            JObject move = new JObject();
-            move["Name"] = game_name;
-            move["Direction"] = direction;
-
-            // Send the answer to the rival
-            this.Answer(rival, move.ToString());            
+                // Send the answer to the rival
+                this.Answer(rival, move.ToString());
+            }
+            catch (Exception e)
+            {
+                this.Answer(client, "Error: player has disconnected.");
+            }
         }
     }
 }

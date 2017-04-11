@@ -9,7 +9,7 @@ namespace Server
 {
     public class SolveCommand : Command
     {
-        public SolveCommand(Model model) : base(model)
+        public SolveCommand(IModel model) : base(model)
         {
         }
 

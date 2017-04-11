@@ -9,7 +9,7 @@ namespace Server
 {
     public class GenerateCommand : Command
     {
-        public GenerateCommand(Model model) : base(model)
+        public GenerateCommand(IModel model) : base(model)
         {
 
         }

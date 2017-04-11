@@ -9,21 +9,25 @@ namespace Server
 {
     public class CloseCommand : Command
     {
-        public CloseCommand(Model model) : base(model)
+        public CloseCommand(IModel model) : base(model)
         {
         }
 
 
         public override void Execute(Player client, string parameters)
         {
-            string name = parameters;
+            // Get game name
+            string name = this.model.GetGame(client);
 
-            // Get the game members
-            Player[] clients = this.model.DeleteMultiPlayerGame(name);
+            // Get the rival
+            Player rival = this.model.GetRival(client);
 
             // Send both clients an empty json, means closed.
-            this.Answer(clients[0], "");
-            this.Answer(clients[1], "");
+            this.Answer(client, "Game ended.");
+            this.Answer(rival, "Game ended.");
+
+            // Delete the game.
+            this.model.DeleteMultiPlayerGame(name);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Server
 {
     public class JoinCommand : Command
     {
-        public JoinCommand(Model model) : base(model)
+        public JoinCommand(IModel model) : base(model)
         {
         }
 
@@ -19,7 +19,7 @@ namespace Server
 
             Game game = this.model.JoinMultiPlayerGame(client, name);
 
-            if (game != null)
+            if (game != null && !game.isFull())
                 this.Answer(client, game.ToJSON());
             else
                 this.Answer(client, "Error: Illegal game or you're already playing.");

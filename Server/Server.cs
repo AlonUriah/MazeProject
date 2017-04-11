@@ -19,9 +19,7 @@ namespace Server
         private List<Player> clients;
         private TcpListener listener;
         private int port;
-        private NetworkStream ns;
-        private StreamReader sr;
-        private StreamWriter sw;
+
         private bool isOnline;
 
         private int clients_id;
@@ -34,7 +32,7 @@ namespace Server
             this.controller = new Controller(this.model);
 
             this.port = port;
-            this.listener = new TcpListener(new IPEndPoint(IPAddress.Parse("localhost"), port));
+            this.listener = new TcpListener(new IPEndPoint(IPAddress.Parse("127.0.0.1"), port));
             this.clients = new List<Player>();
             this.isOnline = false;
 
@@ -79,6 +77,9 @@ namespace Server
                         {
                             // Get a command from the client
                             string cmd = sr.ReadLine();
+
+                            // Print the command
+                            Console.WriteLine(">> Client no. " + client.Id + ": " + cmd);
 
                             // Apply it by the controller
                             this.controller.ApplyCommand(client, cmd);

@@ -50,7 +50,7 @@ namespace Server
                 Maze maze = this.mazer.Generate(rows, cols);
                 maze.Name = name;
 
-                Game result = new SinglePlayerGame(name,  maze);
+                Game result = new SinglePlayerGame(name, maze);
                 this.games.Add(name, result);
                 return result;
             }
@@ -85,10 +85,8 @@ namespace Server
             }
         }
 
-        public Player[] DeleteMultiPlayerGame(string name)
+        public void DeleteMultiPlayerGame(string name)
         {
-            Player[] players_arr = null;
-
             lock (this.games_locker)
             {
                 this.games.Remove(name);
@@ -98,15 +96,11 @@ namespace Server
                     foreach (Player[] clients in this.players.Keys)
                         if (this.players[clients] == name)
                         {
-                            players_arr = clients;
                             this.players.Remove(clients);
                             break;
                         }
                 }
             }
-
-
-            return players_arr;
         }
 
         public Game JoinMultiPlayerGame(Player client, string name)
@@ -130,29 +124,29 @@ namespace Server
         }
 
         public Player GetRival(Player player)
-    {
-        lock (this.players_locker)
         {
-            foreach (Player[] pl in this.players.Keys)
+            lock (this.players_locker)
             {
-                if (pl[0].Id == player.Id)
-                    return pl[0];
-                if (pl[1].Id == player.Id)
-                    return pl[1];
+                foreach (Player[] pl in this.players.Keys)
+                {
+                    if (pl[0].Id == player.Id)
+                        return pl[1];
+                    if (pl[1].Id == player.Id)
+                        return pl[0];
+                }
             }
+            return null;
         }
-        return null;
-    }
 
         public string GetGame(Player player)
-    {
-        lock (this.players_locker)
         {
-            foreach (Player[] pl in this.players.Keys)
-                if (pl[0].Id == player.Id || pl[1].Id == player.Id)
-                    return this.players[pl];
+            lock (this.players_locker)
+            {
+                foreach (Player[] pl in this.players.Keys)
+                    if (pl[0].Id == player.Id || pl[1].Id == player.Id)
+                        return this.players[pl];
+            }
+            return null;
         }
-        return null;
-    }
     }
 }

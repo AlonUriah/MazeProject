@@ -10,7 +10,7 @@ namespace Server
 {
     public class ListCommand : Command
     {
-        public ListCommand(Model model) : base(model)
+        public ListCommand(IModel model) : base(model)
         {
         }
 
