@@ -14,7 +14,7 @@ namespace Server
     {
         protected readonly object ready_locker = new object();
 
-        private bool ready;
+        protected bool ready;
 
         public string Name { get; private set; }
         public Maze Maze { get; private set; }
@@ -43,7 +43,7 @@ namespace Server
 
         public bool isFull()
         {
-            return !Ready;
+            return this.ready;
         }
 
         public string ToJSON()

@@ -11,7 +11,7 @@ namespace Server
     {
         public SinglePlayerGame(string name, Maze maze) : base(name, maze)
         {
-            Ready = true;
+            this.ready = true;
         }
     }
 }

@@ -60,28 +60,32 @@ namespace Server
         {
             lock (this.games_locker)
             {
-                // Check for existing game
-                foreach (Game game in this.games.Values)
-                    if (game.Name == name)
-                        return null;
+                lock (this.players_locker)
+                {
+                    // Check for existing game
+                    foreach (Game game in this.games.Values)
+                        if (game.Name == name)
+                            return null;
 
-                // Check for existing client
-                foreach (Player[] clients in this.players.Keys)
-                    if (clients[0].Id == client.Id || clients[1].Id == client.Id)
-                        return null;
+                    // Check for existing client
+                    foreach (Player[] clients in this.players.Keys)
+                        if ((clients[0] != null && clients[0].Id == client.Id) ||
+                            (clients[1] != null && clients[1].Id == client.Id))
+                            return null;
 
-                // Add the client to a pair
-                this.players.Add(new Player[] { client, null }, name);
+                    // Add the client to a pair
+                    this.players.Add(new Player[] { client, null }, name);
 
-                // If validation passed - add the game.
-                Maze maze = this.mazer.Generate(rows, cols);
-                maze.Name = name;
+                    // If validation passed - add the game.
+                    Maze maze = this.mazer.Generate(rows, cols);
+                    maze.Name = name;
 
-                Game result = new MultiPlayerGame(name, maze);
-                this.games.Add(name, result);
+                    Game result = new MultiPlayerGame(name, maze);
+                    this.games.Add(name, result);
 
-                // Return a json representation of the game.
-                return result;
+                    // Return a json representation of the game.
+                    return result;
+                }
             }
         }
 
@@ -107,17 +111,16 @@ namespace Server
         {
             lock (this.players_locker)
             {
-                foreach (Player[] clients in this.players.Keys)
-                    if (this.players[clients] == name)
-                    {
-                        clients[1] = client;
-
-                        lock (this.games_locker)
+                lock (this.games_locker)
+                {
+                    foreach (Player[] clients in this.players.Keys)
+                        if (this.players[clients] == name && clients[1] == null)
                         {
+                            clients[1] = client;
                             this.games[name].Ready = true;
                             return this.games[name];
                         }
-                    }
+                }
             }
 
             return null;

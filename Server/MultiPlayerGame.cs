@@ -11,7 +11,7 @@ namespace Server
     {
         public MultiPlayerGame(string name, Maze maze) : base(name, maze)
         {
-            Ready = false;
+            this.ready = false;
         }
     }
 }
