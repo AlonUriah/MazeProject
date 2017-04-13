@@ -22,7 +22,10 @@ namespace Server
             if (game != null)
                 this.Answer(client, game.ToJSON());
             else
+            {
                 this.Answer(client, "Error: Illegal game or you're already playing.");
+                client.Connection.Close();
+            }
         }
     }
 }

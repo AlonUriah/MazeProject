@@ -24,6 +24,7 @@ namespace Server
                 lst.Add(list[i]);
 
             this.Answer(client, lst.ToString());
+            client.Connection.Close();
         }
     }
 }

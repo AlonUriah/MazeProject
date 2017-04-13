@@ -11,7 +11,7 @@ namespace Client
         static void Main(string[] args)
         {
             Client client = new Client(args[0], args[1]);
-            client.Connect();
+            client.Broadcast();
         }
     }
 }

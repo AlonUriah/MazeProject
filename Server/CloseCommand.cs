@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -22,9 +23,11 @@ namespace Server
             // Get the rival
             Player rival = this.model.GetRival(client);
 
+            JObject json = new JObject();
+
             // Send both clients an empty json, means closed.
-            this.Answer(client, "Game ended.");
-            this.Answer(rival, "Game ended.");
+            client.Connection.Close();
+            rival.Connection.Close();
 
             // Delete the game.
             this.model.DeleteMultiPlayerGame(name);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,12 +7,14 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Client
 {
     public class Client
     {
         private bool connected;
+        private bool exit;
         private TcpClient client;
         private NetworkStream ns;
         private StreamReader sr;
@@ -19,7 +22,7 @@ namespace Client
 
         private IPAddress ip;
         private int port;
-        
+
         public Client(string ip, string port)
         {
             try
@@ -41,10 +44,10 @@ namespace Client
             }
 
             this.connected = false;
-
+            this.exit = false;
         }
 
-        public void Connect()
+        private void Connect()
         {
             try
             {
@@ -61,35 +64,58 @@ namespace Client
             this.ns = this.client.GetStream();
             this.sr = new StreamReader(this.ns);
             this.sw = new StreamWriter(this.ns);
-
-
-            Task.Factory.StartNew(this.Broadcast);
-
-            this.Listen();
         }
 
         private void Listen()
         {
             while (this.connected)
             {
-                string response = this.sr.ReadLine();
-                Console.WriteLine(">> Server: " + response);
+                try
+                {
+                    string response = this.sr.ReadLine();
+                    if (response == null)
+                        throw new Exception("Note: Connection shut down.");
+                    
+                    Console.WriteLine(">> Server: " + response);
+                }
+
+                catch (Exception e)
+                {
+                    this.connected = false;
+                }
             }
         }
 
-        private void Broadcast()
+        public void Broadcast()
         {
-            while (this.connected)
+            while (!this.exit)
             {
-                string broadcast = Console.ReadLine();
-                this.sw.WriteLine(broadcast);
-                this.sw.Flush();
+                try
+                {
+                    string broadcast = Console.ReadLine();
+
+                    if (broadcast == "exit")
+                        throw new Exception("Note: Program shutdown!");
+
+                    if (!this.connected)
+                    {
+                        this.Connect();
+                        Task.Factory.StartNew(this.Listen);
+                    }
+                    this.sw.WriteLine(broadcast);
+                    this.sw.Flush();
+                }
+                catch (Exception e)
+                {
+                    this.connected = false;
+                    this.exit = true;
+                }
             }
         }
 
-        public void Disconnect()
+        public void Exit()
         {
-            this.connected = false;
+            this.exit = true;
         }
     }
 }

@@ -69,7 +69,6 @@ namespace Server
                     bool ClientConnected = true;
                     NetworkStream ns = currentClient.GetStream();
                     StreamReader sr = new StreamReader(ns);
-                    StreamWriter sw = new StreamWriter(ns);
 
                     while (ClientConnected)
                     {
@@ -89,10 +88,7 @@ namespace Server
                         {
                             ClientConnected = false;
                             sr.Close();
-                            sw.Close();
                             ns.Close();
-
-                            Console.WriteLine(ex.Message);
                             
                             lock (this.clients_locker)
                             {

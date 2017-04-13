@@ -26,6 +26,8 @@ namespace Server
                 this.Answer(client, game.ToJSON());
             else
                 this.Answer(client, "Error: Illegal name or you're already playing.");
+
+            client.Connection.Close();
         }
     }
 }

@@ -28,12 +28,15 @@ namespace Server
                 // Wait for another player to join the game.
                 while (!game.Ready)
                     Thread.Sleep(500);
-                
+
                 // Send the game to the creator.
                 this.Answer(client, game.ToJSON());
             }
             else
+            {
                 this.Answer(client, "Error: Illegal name or you're already playing.");
+                client.Connection.Close();
+            }
         }
     }
 }
