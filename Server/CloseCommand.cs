@@ -41,12 +41,19 @@ namespace Server
             // Get the rival details.
             Player rival = this.model.GetRival(client);
 
-            // Close both players connections, means the game is over.
-            client.Connection.Close();
-            rival.Connection.Close();
+            try
+            {
+                // Close both players connections, means the game is over.
+                client.Connection.Close();
+                rival.Connection.Close();
 
-            // Delete the game from the model.
-            this.model.DeleteMultiPlayerGame(name);
+                // Delete the game from the model.
+                this.model.DeleteMultiPlayerGame(name);
+            }
+            catch (Exception e)
+            {
+                return;
+            }
         }
     }
 }

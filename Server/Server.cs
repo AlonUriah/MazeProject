@@ -93,7 +93,7 @@ namespace Server
                     this.clients.Add(client);
                     this.clients_id++;
                 }
-
+                
                 // Handle the client with a specific task.
                 Task.Factory.StartNew(() =>
                 {
