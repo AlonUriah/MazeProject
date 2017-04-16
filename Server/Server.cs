@@ -22,9 +22,9 @@ namespace Server
         // Model and Controller interfaces properties.
         private IController controller;
         private IModel model;
-        
+
         // player's list
-        private List<Player> clients;
+        private Dictionary<int, Player> clients;
 
         // A TcpListener object
         private TcpListener listener;
@@ -54,7 +54,7 @@ namespace Server
 
             this.port = port;
             this.listener = new TcpListener(new IPEndPoint(IPAddress.Parse("127.0.0.1"), port));
-            this.clients = new List<Player>();
+            this.clients = new Dictionary<int, Player>();
             this.isOnline = false;
 
             this.clients_id = 0;
@@ -84,24 +84,52 @@ namespace Server
             {
                 // Accept a new client.
                 TcpClient currentClient = this.listener.AcceptTcpClient();
+                // Get the stream data
+                NetworkStream ns = currentClient.GetStream();
+                StreamReader sr = new StreamReader(ns);
+                StreamWriter sw = new StreamWriter(ns);
+                int id;
                 Player client = null;
-                
-                lock (this.clients_locker)
+
+                try
                 {
-                    // Save the client's data to the list.
-                    client = new Player(this.clients_id, currentClient);
-                    this.clients.Add(client);
-                    this.clients_id++;
+                    string authentication = sr.ReadLine();
+                    id = int.Parse(authentication);
                 }
-                
+                catch (Exception e)
+                {
+                    continue;
+                }
+
+                if (id == -1)
+                {
+                    lock (this.clients_locker)
+                    {
+                        // Send a unique id to the client.
+                        sw.WriteLine(this.clients_id);
+                        sw.Flush();
+                        // Save the client's data to the list.
+                        client = new Player(this.clients_id, currentClient);
+                        this.clients.Add(this.clients_id, client);
+                        this.clients_id++;
+                    }
+                }
+                else
+                {
+                    // Get the appropriate client, and update its connection details.
+                    lock (this.clients_locker)
+                    {
+                        this.clients[id].Connection = currentClient;
+                        client = this.clients[id];
+                    }
+                }
+
                 // Handle the client with a specific task.
                 Task.Factory.StartNew(() =>
                 {
                     bool ClientConnected = true;
 
-                    // Get the stream data
-                    NetworkStream ns = currentClient.GetStream();
-                    StreamReader sr = new StreamReader(ns);
+
 
                     // While the client is still connceted...
                     while (ClientConnected)
@@ -123,12 +151,6 @@ namespace Server
                             ClientConnected = false;
                             sr.Close();
                             ns.Close();
-                            
-                            lock (this.clients_locker)
-                            {
-                                // Remove the client from the list.
-                                this.clients.Remove(client);
-                            }
                         }
                     }
                 });

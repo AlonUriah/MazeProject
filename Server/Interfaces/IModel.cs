@@ -36,7 +36,7 @@ namespace Server
          * The method deletes a multi player game to the model,
          * and returns it.
          */
-        void DeleteMultiPlayerGame(string name);
+        bool DeleteGame(string name);
         /*
          * The JoinMultiPlayerGame method.
          * The method adds the client to the 'name' game,
@@ -55,5 +55,10 @@ namespace Server
          * which 'player' is involved in.
          */
         string GetGame(Player player);
+        /*
+         * The GetGame method.
+         * The method returns the game by its name.
+         */
+        Game GetGame(string player);
     }
 }

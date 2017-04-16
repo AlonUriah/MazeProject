@@ -144,12 +144,15 @@ namespace Server
          * The method deletes a multi player game to the model,
          * and returns it.
          */
-        public void DeleteMultiPlayerGame(string name)
+        public bool DeleteGame(string name)
         {
             lock (this.games_locker)
             {
                 // Delete the game from the list.
-                this.games.Remove(name);
+                if (this.games.ContainsKey(name))
+                    this.games.Remove(name);
+                else
+                    return false;
 
                 lock (this.players_locker)
                 {
@@ -165,6 +168,7 @@ namespace Server
                         }
                 }
             }
+            return true;
         }
         /*
          * The JoinMultiPlayerGame method.
@@ -235,11 +239,24 @@ namespace Server
                  * return the name of the game they are playing.
                  */
                 foreach (Player[] pl in this.players.Keys)
-                    if ((pl[0] != null && pl[0].Id == player.Id) || 
+                    if ((pl[0] != null && pl[0].Id == player.Id) ||
                         (pl[1] != null && pl[1].Id == player.Id))
                         return this.players[pl];
             }
             // If there's no such game - return null.
+            return null;
+        }
+        /*
+         * The GetGame method.
+         * The method returns the Game by its name.
+         */
+        public Game GetGame(string name)
+        {
+            lock (this.games_locker)
+            {
+                if (this.games.ContainsKey(name))
+                    return this.games[name];
+            }
             return null;
         }
     }

@@ -2,9 +2,9 @@
 using SearchAlgorithmsLib;
 using SearchAlgorithmsLib.Interfaces;
 using MazeLib;
-using AP2EX1.Interfaces;
+using Server.Interfaces;
 
-namespace AP2EX1.Adapters
+namespace Server.Adapters
 {
     class MazeAdapter : ISearchable<Position>,IMaze,IDrawable
     {

@@ -48,7 +48,7 @@ namespace Server
                 rival.Connection.Close();
 
                 // Delete the game from the model.
-                this.model.DeleteMultiPlayerGame(name);
+                this.model.DeleteGame(name);
             }
             catch (Exception e)
             {

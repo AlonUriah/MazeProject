@@ -16,7 +16,7 @@ namespace Server
     public class Player
     {
         // The connection property
-        public TcpClient Connection { get; private set; }
+        public TcpClient Connection { get; set; }
         // The id property
         public int Id { get; private set; }
 

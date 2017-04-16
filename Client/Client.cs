@@ -38,6 +38,7 @@ namespace Client
         // The connection details
         private IPAddress ip;
         private int port;
+        private int id;
 
         /*
          * The Client constructor.
@@ -70,6 +71,7 @@ namespace Client
             // Setting properties
             this.connected = false;
             this.exit = false;
+            this.id = -1;
         }
 
         /*
@@ -100,6 +102,25 @@ namespace Client
             this.ns = this.client.GetStream();
             this.sr = new StreamReader(this.ns);
             this.sw = new StreamWriter(this.ns);
+
+            // Send the unique id for authentication.
+            this.sw.WriteLine(this.id);
+            this.sw.Flush();
+
+            // On startup, get a unique id from the server and save it.
+            if (this.id == -1)
+            {
+                try
+                {
+                    string authentication = this.sr.ReadLine();
+                    this.id = int.Parse(authentication);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Error: couldn't authenticate");
+                }
+            }
+            
         }
 
         /*
