@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using SearchAlgorithmsLib;
 using SearchAlgorithmsLib.Interfaces;
-using MazeLib;
 using Server.Interfaces;
+using MazeLib;
 
 namespace Server.Adapters
 {
@@ -76,67 +76,43 @@ namespace Server.Adapters
         public State<Position> GetGoalState()
         {
             Position goalPosition = _maze.GoalPos;
-            return new State<Position>(goalPosition);//ref goalPosition);
+            return new State<Position>(goalPosition);
         }
 
         public State<Position> GetInitialState()
         {
             Position initialPosition = _maze.InitialPos;
-            return new State<Position>(initialPosition);//ref initialPosition);
+            return new State<Position>(initialPosition);
         }
         #endregion
 
         #region IMaze interface implementation
         public int Cols
         {
-            get
-            {
-                return _maze.Cols;
-            }
+            get { return _maze.Cols; }
         }
 
         public int Rows
         {
-            get
-            {
-                return _maze.Rows;
-            }
+            get { return _maze.Rows; }
         }
 
         public Position GoalPos
         {
-            get
-            {
-                return _maze.GoalPos;
-            }
-            set
-            {
-                _maze.GoalPos = value;
-            }
+            get { return _maze.GoalPos; }
+            set { _maze.GoalPos = value; }
         }
 
         public Position InitialPos
         {
-            get
-            {
-                return _maze.InitialPos;
-            }
-            set
-            {
-                _maze.InitialPos = value;
-            }
+            get { return _maze.InitialPos; }
+            set { _maze.InitialPos = value; }
         }
 
         public CellType this[int row, int col]
         {
-            get
-            {
-                return _maze[row, col];
-            }
-            set
-            {
-                _maze[row, col] = value;
-            }
+            get { return _maze[row, col]; }
+            set { _maze[row, col] = value; }
         }
         #endregion
 

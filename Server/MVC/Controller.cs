@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Server
 {
@@ -53,43 +49,23 @@ namespace Server
          */
         public void ApplyCommand(Player client, string command)
         {
-            // Calculate the index of the first space
-            int cmdIndex = command.IndexOf(' ');
+            var regex = new Regex(@"(?'command'[a-z,A-Z]*)(?'parameters'.*)");
+            Match match = regex.Match(command);
 
-            // Declare two parts of the commands - name and arguments.
-            string cmd = null;
-            string parameters = null;
+            // Command is not in the right format of <command> <params>
+            if (!match.Success) return;
 
-            try
-            {
-                // Till this index, will be the command name.
-                cmd = command.Substring(0, cmdIndex);
+            string commandName = match.Groups["command"].Value;
+            string parameters = match.Groups["parameters"].Value.TrimStart(' ');
 
-                // After this index, will be the command parameters
-                parameters = command.Substring(cmdIndex + 1, command.Length - cmdIndex - 1);
-            }
-            catch (Exception e)
+            ICommand commandToApply;
+            if (!commands.TryGetValue(commandName.ToLower(), out commandToApply))
             {
-                // If there's no space, it must be 'close' or 'list' commands.
-                cmd = command;
-                parameters = "";
-            }
-
-            try
-            {
-                // Execute the correct command
-                this.commands[cmd].Execute(client, parameters);
-            }
-            catch (Exception e)
-            {
-                /*
-                 * After we've done the parsing job, 
-                 * No command can be executed unless it is
-                 * in the correct format.
-                 * Otherwise, just return - means do nothing.
-                 */
+                //info - could not identify command
                 return;
             }
+
+            commandToApply.Execute(client,parameters);
         }
     }
 }
