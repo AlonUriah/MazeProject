@@ -61,7 +61,7 @@ namespace Server
             {
                 // Get the maze to solve
                 Maze maze = game.Maze;
-
+                /*
                 // Solve the maze!        [---------- TO DO ----------]
                 var mazeAdapter = new MazeAdapter(game.Maze);
                 var bfsSearcher = new BFS();
@@ -76,7 +76,7 @@ namespace Server
 
                 // Send the response to the client.
                 this.Answer(client, response);
-
+                */
                 // Delete the game, and close the connection.
                 this.model.DeleteGame(name);
                 client.Connection.Close();
