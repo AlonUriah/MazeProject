@@ -127,12 +127,9 @@ namespace Server
                 // Handle the client with a specific task.
                 Task.Factory.StartNew(() =>
                 {
-                    bool ClientConnected = true;
-
-
-
+                    client.Connected = true;
                     // While the client is still connceted...
-                    while (ClientConnected)
+                    while (client.Connected)
                     {
                         try
                         {
@@ -148,7 +145,7 @@ namespace Server
                         catch (Exception ex)
                         {
                             // Close the connection, and the stream.
-                            ClientConnected = false;
+                            client.Connected = false;
                             sr.Close();
                             ns.Close();
                         }

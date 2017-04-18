@@ -37,6 +37,8 @@ namespace Server
 
             try
             {
+                client.Connected = false;
+                rival.Connected = false;
                 // Close both players connections, means the game is over.
                 client.Connection.Close();
                 rival.Connection.Close();

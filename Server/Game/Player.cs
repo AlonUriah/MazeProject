@@ -10,6 +10,8 @@ namespace Server
      */
     public class Player
     {
+        // Is connected property
+        public bool Connected { get; set; }
         // The connection property
         public TcpClient Connection { get; set; }
         // The id property
@@ -24,6 +26,7 @@ namespace Server
         {
             Id = id;
             Connection = connection;
+            Connected = false;
         }
     }
 }

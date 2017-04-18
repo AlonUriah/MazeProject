@@ -54,6 +54,7 @@ namespace Server
                 this.Answer(client, "Error: Illegal name or you're already playing.");
 
             // Anyways, close the connection.
+            client.Connected = false;
             client.Connection.Close();
         }
     }

@@ -79,6 +79,7 @@ namespace Server
 
             // Delete the game, and close the connection.
             this.model.DeleteGame(name);
+            client.Connected = false;
             client.Connection.Close();
         }
     }
