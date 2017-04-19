@@ -44,13 +44,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\MazeLib.dll</HintPath>
     </Reference>
-    <Reference Include="MedallionPriorityQueue, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MedallionPriorityQueue.1.0.1\lib\net45\MedallionPriorityQueue.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NuGet.Core, Version=1.6.30117.9648, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>H:\Documents\Visual Studio 2012\Projects\AP2_Sol\AP2EX1\bin\Debug\NuGet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SearchAlgorithmsLib">
+      <HintPath>H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,6 +67,8 @@
   <ItemGroup>
     <Compile Include="Adapters\JasonSolutionBuilder.cs" />
     <Compile Include="Adapters\MazeAdapter.cs" />
+    <Compile Include="Interfaces\IDrawable.cs" />
+    <Compile Include="Interfaces\IMaze.cs" />
     <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Commands\CloseCommand.cs" />
@@ -90,16 +97,6 @@
   <ItemGroup>
     <Content Include="MazeGeneratorLib.dll" />
     <Content Include="MazeLib.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Desktop\AP2EX1\AP2EX1.csproj">
-      <Project>{2d53dda7-1705-4ca1-b48b-8715856197d9}</Project>
-      <Name>AP2EX1</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Desktop\SearchAlgorithmsLib\SearchAlgorithmsLib.csproj">
-      <Project>{45f9dba2-1f45-4795-900b-a6ec3cbd7131}</Project>
-      <Name>SearchAlgorithmsLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

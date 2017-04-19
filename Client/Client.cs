@@ -133,25 +133,33 @@ namespace Client
          */
         private void Listen()
         {
-            // As long as the connection is alive...
-            while (this.connected)
+            try
             {
-                try
+                // As long as the connection is alive...
+                while (this.connected)
                 {
-                    // Read a buffer from the stream
-                    string response = this.sr.ReadLine();
+                    try
+                    {
+                        // Read a buffer from the stream
+                        string response = this.sr.ReadLine();
 
-                    // If it is null, raise an exception.
-                    if (response == null)
-                        throw new Exception("Note: Connection shut down.");
+                        // If it is null, raise an exception.
+                        if (response == null)
+                            //throw new Exception("Note: Connection shut down.");
+                            this.connected = false;
 
-                    // Otherwise, write the data to the console.
-                    Console.WriteLine(">> Server: " + response);
+                        // Otherwise, write the data to the console.
+                        Console.WriteLine(">> Server: " + response);
+                    }
+                    catch (Exception e)
+                    {
+                        this.connected = false;
+                    }
                 }
-                catch (Exception e)
-                {
-                    this.connected = false;
-                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
@@ -174,7 +182,11 @@ namespace Client
 
                     // If the command is 'exit', raise an exception.
                     if (broadcast == "exit")
-                        throw new Exception("Note: Program shutdown!");
+                    {
+                        this.connected = false;
+                        this.exit = true;
+                        continue;
+                    }
 
                     // If there is no connection alive, create it.
                     if (!this.connected)

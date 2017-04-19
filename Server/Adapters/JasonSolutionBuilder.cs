@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System.Text;
 using MazeLib;
 
-namespace AP2EX1.Adapters
+namespace Server.Adapters
 {
     public class JasonSolutionBuilder : ISolutionJasonBuilder
     {
@@ -74,6 +74,20 @@ namespace AP2EX1.Adapters
         public JObject ToJason()
         {
             return _jasonObject;
+        }
+    }
+
+    internal static class PositionExtensions
+    {
+        public static Direction Subtract(this Position from, Position to)
+        {
+            int fromX = from.Col, fromY = from.Row;
+            int toX = to.Col, toY = to.Row;
+
+            if (toX - fromX == -1) return Direction.Left;
+            else if (toX - fromX == 1) return Direction.Right;
+            else if (toY - fromY == -1) return Direction.Down;
+            else return Direction.Up;
         }
     }
 }

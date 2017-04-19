@@ -44,6 +44,7 @@ namespace Server
 
             // Return the list, and close the connection.
             this.Answer(client, lst.ToString());
+            client.Connected = false;
             client.Connection.Close();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using MazeGeneratorLib;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,8 +13,12 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            Server server = new Server(int.Parse(args[0]));
-            server.Start();
+            int port;
+            if (int.TryParse(ConfigurationManager.AppSettings["port"], out port))
+            {
+                Server server = new Server(port);
+                server.Start();
+            }
         }
     }
 }

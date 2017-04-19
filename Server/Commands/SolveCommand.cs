@@ -1,11 +1,8 @@
 ﻿using MazeLib;
 using Server.Adapters;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
+using SearchAlgorithmsLib;
+using SearchAlgorithmsLib.Searchers;
 
 namespace Server
 {
@@ -33,62 +30,57 @@ namespace Server
          */
         public override void Execute(Player client, string parameters)
         {
-            // Split the arguments by space character.
-            string[] args = parameters.Split(' ');
-            // First argument - game's name.
-            string name = args[0];
-            // Second argument - 0 for BFS, 1 for DFS (algorithm).
-            int algorithm;
+            const int BFS_SYMBOL = 0;
+            const int DFS_SYMBOL = 1;
 
-            // Try to parse the algorithm number.
-            try
+            // parameters expected format: <gamename> <searchalgorithm>
+            string[] args = parameters.Split(' ');            
+            string name = args[0];
+
+            Game game = model.GetGame(name);
+            if (game == null)
             {
-                algorithm = int.Parse(args[1]);
-                if (algorithm != 0 || algorithm != 1)
-                    throw new Exception("Error: No such algorithm.");
-            }
-            catch (Exception e)
-            {
-                this.Answer(client, e.Message);
+                Answer(client, "Error: No such game.");
+                client.Connection.Close();
                 return;
             }
 
-            // Get the game to solve.
-            Game game = this.model.GetGame(name);
-
-            // If there's such a game... solve it!
-            if (game != null)
+            int algorithm;
+            if(!int.TryParse(args[1],out algorithm) || (algorithm != BFS_SYMBOL && algorithm != DFS_SYMBOL))
             {
-                // Get the maze to solve
-                Maze maze = game.Maze;
-                /*
-                // Solve the maze!        [---------- TO DO ----------]
-                var mazeAdapter = new MazeAdapter(game.Maze);
-                var bfsSearcher = new BFS();
-                Solution solution = bfsSearcher.Search(mazeAdapter);
-                var solutionToJasonBuilder = new SolutionJasonBuilder(solution);
-                solutionToJasonBuilder["Name"] = maze.Name;
-                solutionToJasonBuilder["Evaluated"] = bfsSearcher.GetEvaluated();
-                //                        [---------- TO DO ----------]
+                Answer(client, "Error: Expected algorithm parameter is 0 or 1");
+                return;
+            }            
 
-                // Get the solution as json.
-                string response = solutionToJasonBuilder.ToJason().ToString();
-
-                // Send the response to the client.
-                this.Answer(client, response);
-                */
-                // Delete the game, and close the connection.
-                this.model.DeleteGame(name);
-                client.Connection.Close();
+            Maze maze = game.Maze;
+            Searcher<Position> searcher;
+            if (algorithm == BFS_SYMBOL)
+            {
+                searcher = new BFS<Position>();
             }
             else
             {
-                this.Answer(client, "Error: No such game.");
-                client.Connection.Close();
+                searcher = new DFS<Position>();
             }
-            
 
+            // Use a mazeAdpater since it implements ISearchable
+            var mazeAdapter = new MazeAdapter(game.Maze);
+            Solution<Position> solution = searcher.Search(mazeAdapter);
 
+            var solutionToJasonBuilder = new JasonSolutionBuilder(solution);
+            solutionToJasonBuilder["Name"] = maze.Name;
+            solutionToJasonBuilder["Evaluated"] = searcher.GetNumberOfNodesEvaluated();
+
+            // Get the solution as json.
+            string response = solutionToJasonBuilder.ToJason().ToString();
+
+            // Send the response to the client.
+            this.Answer(client, response);
+
+            // Delete the game, and close the connection.
+            this.model.DeleteGame(name);
+            client.Connected = false;
+            client.Connection.Close();
         }
     }
 }

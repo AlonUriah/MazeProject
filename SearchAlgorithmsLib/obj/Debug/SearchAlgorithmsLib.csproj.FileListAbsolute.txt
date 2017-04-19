@@ -1,0 +1,12 @@
+h:\documents\visual studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.dll
+h:\documents\visual studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.pdb
+h:\documents\visual studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\MedallionPriorityQueue.dll
+h:\documents\visual studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\MedallionPriorityQueue.xml
+h:\documents\visual studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.dll
+h:\documents\visual studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.pdb
+h:\documents\visual studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.csprojResolveAssemblyReference.cache
+H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.dll.config
+H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\MazeGeneratorLib.dll
+H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\MazeLib.dll
+H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.dll
+H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.xml

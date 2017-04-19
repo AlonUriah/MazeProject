@@ -1,10 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Server
 {
@@ -36,13 +30,15 @@ namespace Server
         public override void Execute(Player client, string parameters)
         {
             // Get game name.
-            string name = this.model.GetGame(client);
+            string name = parameters;
 
             // Get the rival details.
             Player rival = this.model.GetRival(client);
 
             try
             {
+                rival.Connected = false;
+                client.Connected = false;
                 // Close both players connections, means the game is over.
                 client.Connection.Close();
                 rival.Connection.Close();
