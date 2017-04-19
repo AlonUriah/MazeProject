@@ -1,0 +1,7 @@
+H:\Documents\Visual Studio 2015\Projects\CombinedSolution\Client\bin\Debug\Client.exe.config
+H:\Documents\Visual Studio 2015\Projects\CombinedSolution\Client\bin\Debug\Client.exe
+H:\Documents\Visual Studio 2015\Projects\CombinedSolution\Client\bin\Debug\Client.pdb
+H:\Documents\Visual Studio 2015\Projects\CombinedSolution\Client\bin\Debug\Newtonsoft.Json.dll
+H:\Documents\Visual Studio 2015\Projects\CombinedSolution\Client\bin\Debug\Newtonsoft.Json.xml
+H:\Documents\Visual Studio 2015\Projects\CombinedSolution\Client\obj\Debug\Client.exe
+H:\Documents\Visual Studio 2015\Projects\CombinedSolution\Client\obj\Debug\Client.pdb
