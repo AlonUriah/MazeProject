@@ -30,15 +30,15 @@ namespace Server
         public override void Execute(Player client, string parameters)
         {
             // Get game name.
-            string name = this.model.GetGame(client);
+            string name = parameters;
 
             // Get the rival details.
             Player rival = this.model.GetRival(client);
 
             try
             {
-                client.Connected = false;
                 rival.Connected = false;
+                client.Connected = false;
                 // Close both players connections, means the game is over.
                 client.Connection.Close();
                 rival.Connection.Close();
