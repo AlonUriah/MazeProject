@@ -1,6 +1,5 @@
 ﻿using MazeLib;
 using Server.Adapters;
-using System;
 using SearchAlgorithmsLib;
 using SearchAlgorithmsLib.Searchers;
 
@@ -69,7 +68,7 @@ namespace Server
 
             var solutionToJasonBuilder = new JasonSolutionBuilder(solution);
             solutionToJasonBuilder["Name"] = maze.Name;
-            solutionToJasonBuilder["Evaluated"] = searcher.GetNumberOfNodesEvaluated();
+            solutionToJasonBuilder["NodesEvaluated"] = searcher.GetNumberOfNodesEvaluated();
 
             // Get the solution as json.
             string response = solutionToJasonBuilder.ToJason().ToString();

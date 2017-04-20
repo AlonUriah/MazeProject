@@ -41,9 +41,6 @@ namespace Server.Adapters
                 direction = currentState.Value.Subtract(nextState.Value);
                 solutionBuilder.Append(GetDirectionSymbol(direction));
 
-                if (_solution.States.Count != 0)
-                    solutionBuilder.Append(",");
-
                 currentState = nextState;
             }
 

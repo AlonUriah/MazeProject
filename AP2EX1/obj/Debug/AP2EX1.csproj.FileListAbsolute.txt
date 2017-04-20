@@ -30,3 +30,19 @@ H:\Documents\Visual Studio 2015\Projects\CombinedSolution\AP2EX1\bin\Debug\Medal
 H:\Documents\Visual Studio 2015\Projects\CombinedSolution\AP2EX1\bin\Debug\Newtonsoft.Json.xml
 H:\Documents\Visual Studio 2015\Projects\CombinedSolution\AP2EX1\bin\Debug\SearchAlgorithmsLib.pdb
 H:\Documents\Visual Studio 2015\Projects\CombinedSolution\AP2EX1\obj\Debug\AP2EX1.csprojResolveAssemblyReference.cache
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.exe.config
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.exe
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.pdb
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\MazeGeneratorLib.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\MazeLib.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\Microsoft.Web.XmlTransform.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\NuGet.Core.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\SearchAlgorithmsLib.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\MedallionPriorityQueue.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\SearchAlgorithmsLib.pdb
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\MedallionPriorityQueue.xml
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.csprojResolveAssemblyReference.cache
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.exe
+C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.pdb

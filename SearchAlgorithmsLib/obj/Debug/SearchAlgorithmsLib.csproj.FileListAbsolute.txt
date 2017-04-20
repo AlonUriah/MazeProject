@@ -10,3 +10,12 @@ H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\M
 H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\MazeLib.dll
 H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.dll
 H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.dll.config
+C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.pdb
+C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\MedallionPriorityQueue.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\MedallionPriorityQueue.xml
+C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.dll
+C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.pdb

@@ -62,7 +62,7 @@ namespace SearchAlgorithmsLib
              * If inner state is not IComparable, just compare HashCodes
              * Alternative was to throw an Exception. 
              */
-            if(_state == null)
+            if(compState == null)
             {
                 return GetHashCode().CompareTo(obj.GetHashCode());
             }
