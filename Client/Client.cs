@@ -145,11 +145,14 @@ namespace Client
 
                         // If it is null, raise an exception.
                         if (response == null)
+                        {
                             //throw new Exception("Note: Connection shut down.");
                             this.connected = false;
+                            continue;
+                        }
 
                         // Otherwise, write the data to the console.
-                        Console.WriteLine(">> Server: " + response);
+                        Console.WriteLine(">> " + response);
                     }
                     catch (Exception e)
                     {

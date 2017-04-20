@@ -6,7 +6,7 @@ using MazeLib;
 
 namespace Server.Adapters
 {
-    class MazeAdapter : ISearchable<Position>//,IMaze,IDrawable
+    class MazeAdapter : ISearchable<Position>,IMaze,IDrawable
     {
         private Maze _maze;
 
