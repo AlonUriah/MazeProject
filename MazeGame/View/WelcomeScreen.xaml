@@ -1,0 +1,35 @@
+﻿<Window x:Class="MazeGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MazeGame"
+        mc:Ignorable="d"
+        FlowDirection="LeftToRight"
+        Title="MainWindow" Height="350" Width="300">
+    <DockPanel TextBlock.FontSize="16">
+        <Grid DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80">
+            <Image Grid.Column="0" Source="./Resources/Logo.jpg" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="70" />
+            <Label Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Height="100" FontSize="50" FontStyle="Italic" Content="Maze" FontWeight="Bold"/>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Content="(C) Alon and Uriah" Height="30" RenderTransformOrigin="-1.443,4.033" />
+        <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Grid.Row="0" Content="Singel Player" Width="200" Margin="0,0,0,10" />
+            <Button Grid.Row="1" Content="Multi Player" Width="200" Margin="0,0,0,10" />
+            <Button Grid.Row="2" Content="Settings" Width="200" Margin="0,0,0,10" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+    </DockPanel>
+</Window>

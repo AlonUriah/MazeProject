@@ -1,0 +1,43 @@
+﻿<Window x:Class="MazeGame.View.MultiplayerMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MazeGame.View"
+        mc:Ignorable="d"
+        Title="MultiPlayerMenu" Height="300" Width="300">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Label Grid.Row="0" Grid.Column="0" Content="List of Games" FontSize="15" HorizontalContentAlignment="Left" />
+        <ListView Grid.Row="0" Grid.Column="1" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ListBoxItem>Dummy1</ListBoxItem>
+            <ListBoxItem>Dummy1</ListBoxItem>
+            <ListBoxItem>Dummy1</ListBoxItem>
+        </ListView>
+
+        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Join Game" Width="150" Margin="0,10,0,10"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Maze Name" FontSize="15" HorizontalContentAlignment="Left" />
+        <TextBox Grid.Row="2" Grid.Column="1" BorderBrush="Black" Margin="0,0,0,5" Height="30" Width="130" VerticalAlignment="Center" />
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Maze Rows" FontSize="15" HorizontalContentAlignment="Left" />
+        <TextBox Grid.Row="3" Grid.Column="1" BorderBrush="Black" Margin="0,0,0,5" Height="30" Width="130" VerticalAlignment="Center"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Maze Columns" FontSize="15" HorizontalContentAlignment="Left" />
+        <TextBox Grid.Row="4" Grid.Column="1" BorderBrush="Black" Margin="0,0,0,5" Height="30" Width="130" VerticalAlignment="Center"/>
+
+            <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Width="150" Content="Start Game" Margin="0,10,0,10" />
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="140" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions> 
+    </Grid>
+</Window>
