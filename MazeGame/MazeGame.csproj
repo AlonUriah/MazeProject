@@ -76,10 +76,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Multiplayer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\MultiplayerMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,9 +115,6 @@
     </Compile>
     <Compile Include="View\Events\IPlayerMovedEventHandler.cs" />
     <Compile Include="View\Events\PlayerMovedEventArgs.cs" />
-    <Compile Include="View\Multiplayer.xaml.cs">
-      <DependentUpon>Multiplayer.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\MultiplayerMenu.xaml.cs">
       <DependentUpon>MultiplayerMenu.xaml</DependentUpon>
     </Compile>

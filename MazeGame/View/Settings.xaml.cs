@@ -21,15 +21,23 @@ namespace MazeGame.View
     {
         private Window parent;
 
+        public string IP { get; set; } = "127.0.0.1";
+        public int Port { get; set; } = 8888;
+        public int Rows { get; set; } = 10;
+        public int Cols { get; set; } = 10;
+        public int Algorithm { get; set; } = 0;
+
         public Settings(Window parent)
         {
             InitializeComponent();
             this.parent = parent;
+            this.DataContext = this;
         }
 
         private void btn_save_Click(object sender, RoutedEventArgs e)
         {
             // Update settings
+            Properties.Settings.Default.Save();
 
             this.Close();
             parent.Show();
