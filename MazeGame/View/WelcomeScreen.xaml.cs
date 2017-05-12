@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MazeGame.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,26 @@ namespace MazeGame
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btn_single_Click(object sender, RoutedEventArgs e)
+        {
+            Window singleplayer = new SinglePlayerMenu(this);
+            this.Hide();
+            singleplayer.ShowDialog();
+        }
+
+        private void btn_settings_Click(object sender, RoutedEventArgs e)
+        {
+            Window settings = new Settings(this);
+            settings.ShowDialog();
+        }
+
+        private void btn_multi_Click(object sender, RoutedEventArgs e)
+        {
+            Window multiplayer = new MultiplayerMenu(this);
+            this.Hide();
+            multiplayer.ShowDialog();
         }
     }
 }

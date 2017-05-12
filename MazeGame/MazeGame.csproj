@@ -60,15 +60,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\Controls\GameList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\GameProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\MazeCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\MazeDrawer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\mainwindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,19 +92,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\SinglePlayerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\WelcomeScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="ViewModel\GameEvents\PlayEvent.cs" />
     <Compile Include="ViewModel\GameEvents\SettingsSavedEvent.cs" />
     <Compile Include="ViewModel\MazeViewModel.cs" />
     <Compile Include="Model\IModel.cs" />
     <Compile Include="Model\MazeModel.cs" />
+    <Compile Include="View\Controls\GameList.xaml.cs">
+      <DependentUpon>GameList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\GameProperties.xaml.cs">
+      <DependentUpon>GameProperties.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\MazeCell.xaml.cs">
       <DependentUpon>MazeCell.xaml</DependentUpon>
     </Compile>
@@ -109,9 +119,6 @@
     </Compile>
     <Compile Include="View\Events\IPlayerMovedEventHandler.cs" />
     <Compile Include="View\Events\PlayerMovedEventArgs.cs" />
-    <Compile Include="View\mainwindow.xaml.cs">
-      <DependentUpon>mainwindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Multiplayer.xaml.cs">
       <DependentUpon>Multiplayer.xaml</DependentUpon>
     </Compile>
@@ -123,6 +130,9 @@
     </Compile>
     <Compile Include="View\SinglePlayer.xaml.cs">
       <DependentUpon>SinglePlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SinglePlayerMenu.xaml.cs">
+      <DependentUpon>SinglePlayerMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WelcomeScreen.xaml.cs">
       <DependentUpon>WelcomeScreen.xaml</DependentUpon>
@@ -156,8 +166,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="View\Resources\" />
+    <Resource Include="View\Resources\Brick.jpg" />
+    <Resource Include="View\Resources\Logo.jpg" />
+    <Resource Include="View\Resources\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

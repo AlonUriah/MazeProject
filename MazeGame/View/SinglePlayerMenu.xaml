@@ -1,12 +1,13 @@
-﻿<Window x:Class="MazeGame.View.mainwindow"
+﻿<Window x:Name="wdw_singlemenu" x:Class="MazeGame.View.SinglePlayerMenu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeGame.View"
+        xmlns:controls="clr-namespace:MazeGame.View.Controls"
         mc:Ignorable="d"
-        Title="mainwindow" Height="300" Width="300">
-    <Grid>
-        <Button Name="d" Click="d_Click" />
-    </Grid>
+        Title="Single-Player Menu" Height="300" Width="300" WindowStartupLocation="CenterScreen" Closing="wdw_singlemenu_Close">
+    <controls:GameProperties Margin="0,45,0,0">
+        
+    </controls:GameProperties>
 </Window>

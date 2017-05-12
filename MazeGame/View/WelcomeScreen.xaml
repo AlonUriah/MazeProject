@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:MazeGame"
         mc:Ignorable="d"
         FlowDirection="LeftToRight"
-        Title="MainWindow" Height="350" Width="300">
+        Title="Maze Game" Height="350" Width="300" WindowStartupLocation="CenterScreen">
     <DockPanel TextBlock.FontSize="16">
         <Grid DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80">
-            <Image Grid.Column="0" Source="./Resources/Logo.jpg" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="70" />
-            <Label Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Height="100" FontSize="50" FontStyle="Italic" Content="Maze" FontWeight="Bold"/>
+            <Image Grid.Column="0" Source="./Resources/Logo.jpg" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="70" Margin="0,20,0,-10" />
+            <Label Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Height="100" FontSize="50" FontStyle="Italic" Content="Maze" FontWeight="Bold" Margin="0,18,0,-38"/>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70" />
                 <ColumnDefinition Width="150" />
             </Grid.ColumnDefinitions>
         </Grid>
-        <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Content="(C) Alon and Uriah" Height="30" RenderTransformOrigin="-1.443,4.033" />
+        <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Content="© Alon and Uriah™" Height="30" RenderTransformOrigin="-1.443,4.033" />
         <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Grid.Row="0" Content="Singel Player" Width="200" Margin="0,0,0,10" />
-            <Button Grid.Row="1" Content="Multi Player" Width="200" Margin="0,0,0,10" />
-            <Button Grid.Row="2" Content="Settings" Width="200" Margin="0,0,0,10" />
+            <Button x:Name="btn_single" Grid.Row="0" Content="Single Player" Width="200" Margin="0,0,0,10" Click="btn_single_Click"/>
+            <Button x:Name="wdw_home" Grid.Row="1" Content="Multi Player" Width="200" Margin="0,0,0,10" Click="btn_multi_Click" />
+            <Button x:Name="btn_settings" Grid.Row="2" Content="Settings" Width="200" Margin="0,0,0,10" Click="btn_settings_Click" />
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

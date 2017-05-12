@@ -19,9 +19,24 @@ namespace MazeGame.View
     /// </summary>
     public partial class MultiplayerMenu : Window
     {
-        public MultiplayerMenu()
+        private Window parent;
+
+        // private IViewModel vm;
+
+        public string GameName { get; set; } = "Maor";
+        public int Rows { get; set; } = 0;
+        public int Cols { get; set; } = 0;
+
+        public MultiplayerMenu(Window parent)
         {
             InitializeComponent();
+            this.parent = parent;
+            this.DataContext = this;
+        }
+
+        private void wdw_multimenu_Close(object sender, EventArgs e)
+        {
+            this.parent.Show();
         }
     }
 }

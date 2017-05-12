@@ -15,29 +15,21 @@ using System.Windows.Shapes;
 namespace MazeGame.View
 {
     /// <summary>
-    /// Interaction logic for Settings.xaml
+    /// Interaction logic for SinglePlayerMenu.xaml
     /// </summary>
-    public partial class Settings : Window
+    public partial class SinglePlayerMenu : Window
     {
         private Window parent;
 
-        public Settings(Window parent)
+        public SinglePlayerMenu(Window parent)
         {
             InitializeComponent();
             this.parent = parent;
         }
 
-        private void btn_save_Click(object sender, RoutedEventArgs e)
+        private void wdw_singlemenu_Close(object sender, EventArgs e)
         {
-            // Update settings
-
-            this.Close();
-            parent.Show();
-        }
-
-        private void wdw_settings_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            parent.Show();
+            this.parent.Show();
         }
     }
 }

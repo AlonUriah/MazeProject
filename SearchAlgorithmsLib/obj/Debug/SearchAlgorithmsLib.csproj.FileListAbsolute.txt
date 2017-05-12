@@ -19,3 +19,13 @@ C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\Medall
 C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.dll
 C:\Users\Alon Aviv\Source\Repos\MazeProject\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.pdb
+C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.dll.config
+C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.dll
+C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.pdb
+C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\MedallionPriorityQueue.dll
+C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\MedallionPriorityQueue.xml
+C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.xml
+C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.csprojResolveAssemblyReference.cache
+C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.dll
+C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.pdb

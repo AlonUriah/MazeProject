@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="MazeGame.View.Controls.GameList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MazeGame.View.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid HorizontalAlignment="Center">
+        <Label Grid.Row="0" Grid.Column="0" Content="List of Games:" FontSize="15" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="100" />
+        <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="120"/>
+
+        <Button x:Name="btn_join" Grid.Row="1" Grid.Column="0" Content="Join Game" Margin="4,10,6,10"/>
+        <Button x:Name="btn_refresh" Content="Refresh" Grid.Column="1" HorizontalAlignment="Left" Margin="27,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Height="30"/>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="140" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+    </Grid>
+</UserControl>

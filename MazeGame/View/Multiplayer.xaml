@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeGame.View"
         mc:Ignorable="d"
-        Title="Multiplayer" Height="300" Width="300">
+        Title="Multiplayer" Height="300" Width="300" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <Button DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Back To Main Menu" />
         <Label DockPanel.Dock="Right" Content="Other Player's Board" FontSize="15" Foreground="Green" VerticalAlignment="Top" HorizontalAlignment="Center"/>
