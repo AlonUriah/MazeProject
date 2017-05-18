@@ -38,6 +38,12 @@
     <StartupObject>MazeGame.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MazeGeneratorLib">
+      <HintPath>..\..\..\..\Downloads\MazeGeneratorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MazeLib">
+      <HintPath>..\..\..\..\Downloads\MazeLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -68,6 +74,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Controls\GameSurface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\MazeCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -88,6 +98,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\SinglePlayerGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SinglePlayerMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -98,14 +112,20 @@
     </Page>
     <Compile Include="ViewModel\GameEvents\PlayEvent.cs" />
     <Compile Include="ViewModel\GameEvents\SettingsSavedEvent.cs" />
+    <Compile Include="ViewModel\Interfaces\IMultiplayerViewModel.cs" />
+    <Compile Include="ViewModel\Interfaces\ISinglePlayerViewModel.cs" />
     <Compile Include="ViewModel\MazeViewModel.cs" />
     <Compile Include="Model\IModel.cs" />
     <Compile Include="Model\MazeModel.cs" />
+    <Compile Include="ViewModel\VM.cs" />
     <Compile Include="View\Controls\GameList.xaml.cs">
       <DependentUpon>GameList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\GameProperties.xaml.cs">
       <DependentUpon>GameProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\GameSurface.xaml.cs">
+      <DependentUpon>GameSurface.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\MazeCell.xaml.cs">
       <DependentUpon>MazeCell.xaml</DependentUpon>
@@ -124,9 +144,14 @@
     <Compile Include="View\SinglePlayer.xaml.cs">
       <DependentUpon>SinglePlayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SinglePlayerGame.xaml.cs">
+      <DependentUpon>SinglePlayerGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SinglePlayerMenu.xaml.cs">
       <DependentUpon>SinglePlayerMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ValueConverters\HeightToPixelsConverter.cs" />
+    <Compile Include="View\ValueConverters\WidthToPixelsConverter.cs" />
     <Compile Include="View\WelcomeScreen.xaml.cs">
       <DependentUpon>WelcomeScreen.xaml</DependentUpon>
       <SubType>Code</SubType>
