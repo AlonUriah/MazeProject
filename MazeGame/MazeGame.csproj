@@ -219,9 +219,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Resources\Brick.jpg" />
     <Resource Include="View\Resources\Logo.jpg" />
-    <Resource Include="View\Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\end.png" />
+    <Resource Include="View\Resources\player.png" />
+    <Resource Include="View\Resources\start.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

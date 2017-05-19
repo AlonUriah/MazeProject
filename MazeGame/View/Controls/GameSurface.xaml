@@ -48,7 +48,10 @@
         </ItemsControl.ItemContainerStyle>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Rectangle Fill="{Binding Color, Converter={StaticResource ColorConverter}}">
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <Binding Path="Color" Converter="{StaticResource ColorConverter}"/>
+                    </Rectangle.Fill>
                     <Rectangle.Width>
                         <MultiBinding Converter="{StaticResource CellConverter}">
                             <Binding ElementName="uc" Path="ActualWidth"/>

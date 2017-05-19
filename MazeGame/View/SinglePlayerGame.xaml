@@ -21,7 +21,11 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+            <Button>Restart Game</Button>
+            <Button>Solve Maze</Button>
+            <Button>Quit Game</Button>
+        </StackPanel>
         <controls:GameSurface x:Name="game" Grid.Row="1" Grid.Column="0"/>
     </Grid>
 </Window>

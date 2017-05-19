@@ -16,7 +16,7 @@ namespace MazeGame.ViewModel
         public VM()
         {
             this.mazer = new MazeGeneratorLib.DFSMazeGenerator();
-            this.maze = this.mazer.Generate(10, 10);
+            this.maze = this.mazer.Generate(20, 35);
             this.maze.Name = "Uriah";
         }
 
