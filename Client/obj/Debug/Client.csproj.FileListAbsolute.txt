@@ -13,13 +13,6 @@ C:\Users\Alon Aviv\Source\Repos\MazeProject\Client\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Alon Aviv\Source\Repos\MazeProject\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
 C:\Users\Alon Aviv\Source\Repos\MazeProject\Client\obj\Debug\Client.exe
 C:\Users\Alon Aviv\Source\Repos\MazeProject\Client\obj\Debug\Client.pdb
-C:\Users\U1\Source\Repos\MazeProject\Client\bin\Debug\Client.exe.config
-C:\Users\U1\Source\Repos\MazeProject\Client\bin\Debug\Client.exe
-C:\Users\U1\Source\Repos\MazeProject\Client\bin\Debug\Client.pdb
-C:\Users\U1\Source\Repos\MazeProject\Client\bin\Debug\Newtonsoft.Json.dll
-C:\Users\U1\Source\Repos\MazeProject\Client\bin\Debug\Newtonsoft.Json.xml
-C:\Users\U1\Source\Repos\MazeProject\Client\obj\Debug\Client.exe
-C:\Users\U1\Source\Repos\MazeProject\Client\obj\Debug\Client.pdb
 C:\Users\p0022491\Source\Repos\MazeProject\Client\bin\Debug\Client.exe.config
 C:\Users\p0022491\Source\Repos\MazeProject\Client\bin\Debug\Client.exe
 C:\Users\p0022491\Source\Repos\MazeProject\Client\bin\Debug\Client.pdb
@@ -27,3 +20,11 @@ C:\Users\p0022491\Source\Repos\MazeProject\Client\bin\Debug\Newtonsoft.Json.dll
 C:\Users\p0022491\Source\Repos\MazeProject\Client\bin\Debug\Newtonsoft.Json.xml
 C:\Users\p0022491\Source\Repos\MazeProject\Client\obj\Debug\Client.exe
 C:\Users\p0022491\Source\Repos\MazeProject\Client\obj\Debug\Client.pdb
+C:\Users\U1\Source\Repos\MazeProject\Client\bin\Debug\Client.exe.config
+C:\Users\U1\Source\Repos\MazeProject\Client\bin\Debug\Client.exe
+C:\Users\U1\Source\Repos\MazeProject\Client\bin\Debug\Client.pdb
+C:\Users\U1\Source\Repos\MazeProject\Client\bin\Debug\Newtonsoft.Json.dll
+C:\Users\U1\Source\Repos\MazeProject\Client\bin\Debug\Newtonsoft.Json.xml
+C:\Users\U1\Source\Repos\MazeProject\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\U1\Source\Repos\MazeProject\Client\obj\Debug\Client.exe
+C:\Users\U1\Source\Repos\MazeProject\Client\obj\Debug\Client.pdb

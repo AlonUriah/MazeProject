@@ -8,12 +8,16 @@ using System.Windows.Data;
 
 namespace MazeGame.View.ValueConverters
 {
-    public class WidthToPixelsConverter : IValueConverter
+    public class ColorConverter : IValueConverter
     {
-        private const int cell_width = 20;
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (int)(cell_width * (int)(value));
+            char color = (char)(value);
+            if (color == '1')
+                return "Black";
+            if (color == '0')
+                return "White";
+            return "Red";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -46,23 +46,6 @@ C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\bin\Debug\MedallionPriorityQu
 C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.csprojResolveAssemblyReference.cache
 C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.exe
 C:\Users\Alon Aviv\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.pdb
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.exe.config
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.exe
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.pdb
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\MazeGeneratorLib.dll
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\MazeLib.dll
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\Microsoft.Web.XmlTransform.dll
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\Newtonsoft.Json.dll
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\NuGet.Core.dll
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\SearchAlgorithmsLib.dll
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\MedallionPriorityQueue.dll
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\SearchAlgorithmsLib.pdb
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\SearchAlgorithmsLib.dll.config
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\Newtonsoft.Json.xml
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\MedallionPriorityQueue.xml
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.csprojResolveAssemblyReference.cache
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.exe
-C:\Users\U1\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.pdb
 C:\Users\p0022491\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.exe.config
 C:\Users\p0022491\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.exe
 C:\Users\p0022491\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.pdb
@@ -80,3 +63,20 @@ C:\Users\p0022491\Source\Repos\MazeProject\AP2EX1\bin\Debug\MedallionPriorityQue
 C:\Users\p0022491\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.csprojResolveAssemblyReference.cache
 C:\Users\p0022491\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.exe
 C:\Users\p0022491\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.pdb
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.exe.config
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.exe
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\AP2EX1.pdb
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\MazeGeneratorLib.dll
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\MazeLib.dll
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\Microsoft.Web.XmlTransform.dll
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\NuGet.Core.dll
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\SearchAlgorithmsLib.dll
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\MedallionPriorityQueue.dll
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\SearchAlgorithmsLib.pdb
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\SearchAlgorithmsLib.dll.config
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\bin\Debug\MedallionPriorityQueue.xml
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.csprojResolveAssemblyReference.cache
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.exe
+C:\Users\U1\Source\Repos\MazeProject\AP2EX1\obj\Debug\AP2EX1.pdb

@@ -29,10 +29,6 @@ namespace MazeGame.View.Controls
             InitializeComponent();
             this.vm = new VM();
             this.DataContext = this.vm;
-
-
         }
-
-
     }
 }
