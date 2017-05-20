@@ -169,8 +169,8 @@
     <Compile Include="View\SinglePlayerMenu.xaml.cs">
       <DependentUpon>SinglePlayerMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ValueConverters\ColorConverter.cs" />
-    <Compile Include="View\ValueConverters\MazeToRectanglesConverter.cs" />
+    <Compile Include="View\ValueConverters\CellsToFillConverter.cs" />
+    <Compile Include="View\ValueConverters\MazeToCellsConverter.cs" />
     <Compile Include="View\ValueConverters\WidthToCellConverter.cs" />
     <Compile Include="View\ValueConverters\XToWidthConverter.cs" />
     <Compile Include="View\ValueConverters\YToHeightConverter.cs" />

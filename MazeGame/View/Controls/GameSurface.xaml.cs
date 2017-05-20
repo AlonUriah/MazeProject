@@ -1,5 +1,6 @@
 ﻿using MazeGame.ViewModel;
 using MazeGame.ViewModel.Interfaces;
+using MazeLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,5 +31,43 @@ namespace MazeGame.View.Controls
             this.vm = new VM();
             this.DataContext = this.vm;
         }
+
+
+        private void GameSurface_KeyDown(object sender, KeyEventArgs e)
+        {
+            char val;
+            switch (e.Key)
+            {
+                case Key.Up:
+                    val = this.vm.GetValueAtPos(new Position(this.vm.PlayerRow - 1, this.vm.PlayerColumn));
+                    if (val == '0')
+                        this.vm.PlayerRow--;
+                    break;
+                case Key.Down:
+                    val = this.vm.GetValueAtPos(new Position(this.vm.PlayerRow + 1, this.vm.PlayerColumn));
+                    if (val == '0')
+                        this.vm.PlayerRow++;
+                    break;
+                case Key.Right:
+                    val = this.vm.GetValueAtPos(new Position(this.vm.PlayerRow, this.vm.PlayerColumn + 1));
+                    if (val == '0')
+                        this.vm.PlayerColumn++;
+                    break;
+                case Key.Left:
+                    val = this.vm.GetValueAtPos(new Position(this.vm.PlayerRow, this.vm.PlayerColumn - 1));
+                    if (val == '0')
+                        this.vm.PlayerColumn--;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        private void GameSurface_Loaded(object sender, RoutedEventArgs e)
+        {
+            var parent = Window.GetWindow(this);
+            parent.KeyDown += this.GameSurface_KeyDown;
+        }
+
     }
 }

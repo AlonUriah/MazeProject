@@ -19,9 +19,9 @@
         </Grid>
         <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Content="© Alon and Uriah™" Height="30" RenderTransformOrigin="-1.443,4.033" />
         <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="btn_single" Grid.Row="0" Content="Single Player" Width="200" Margin="0,0,0,10" Click="btn_single_Click"/>
-            <Button x:Name="wdw_home" Grid.Row="1" Content="Multi Player" Width="200" Margin="0,0,0,10" Click="btn_multi_Click" />
-            <Button x:Name="btn_settings" Grid.Row="2" Content="Settings" Width="200" Margin="0,0,0,10" Click="btn_settings_Click" />
+            <Button x:Name="btn_single" Style="{StaticResource BaseButtonStyle}" Grid.Row="0" Content="Single Player" Margin="0,0,0,10" Click="btn_single_Click"/>
+            <Button x:Name="wdw_home" Style="{StaticResource BaseButtonStyle}" Grid.Row="1" Content="Multi Player" Margin="0,0,0,10" Click="btn_multi_Click" />
+            <Button x:Name="btn_settings" Style="{StaticResource BaseButtonStyle}" Grid.Row="2" Content="Settings" Margin="0,0,0,10" Click="btn_settings_Click" />
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

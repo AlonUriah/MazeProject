@@ -14,7 +14,7 @@ namespace MazeGame.View.ValueConverters
         {
             double width = (double)(values[0]);
             int cells_num = (int)(values[1]);
-            return width / cells_num;
+            return (width / cells_num);
         }
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {

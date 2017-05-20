@@ -12,7 +12,7 @@ using System.Windows.Data;
 
 namespace MazeGame.View.ValueConverters
 {
-    public class MazeToRectanglesConverter : IValueConverter
+    public class MazeToCellsConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

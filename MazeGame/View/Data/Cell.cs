@@ -8,15 +8,15 @@ namespace MazeGame.View.Data
 {
     public class Cell : ICell
     {
-        private char color;
+        private char fill;
         private int x;
         private int y;
         private int height = 20;
         private int width = 20;
 
-        public Cell(int x, int y, char color)
+        public Cell(int x, int y, char fill)
         {
-            this.color = color;
+            this.fill = fill;
             this.x = x;
             this.y = y;
         }
@@ -69,15 +69,15 @@ namespace MazeGame.View.Data
             }
         }
 
-        public char Color
+        public char Fill
         {
             get
             {
-                return this.color;
+                return this.fill;
             }
             set
             {
-                this.color = value;
+                this.fill = value;
             }
         }
     }

@@ -10,16 +10,16 @@
         <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Content="Default Game Settings" FontSize="15" HorizontalAlignment="Center" Margin="35.205,0,41,0"/>
 
         <Label Grid.Row="1" Grid.Column="0" Content="Server IP address:" Width="110" Margin="0,2,0,34" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-        <TextBox Grid.Row="1" Grid.Column="2" Height="24" Width="120" BorderBrush="Black" VerticalContentAlignment="Center" Text="{Binding IP}" Margin="5,5,5,6" />
+        <TextBox Style="{StaticResource BaseTextBoxStyle}"  Grid.Row="1" Grid.Column="2" Height="24" Width="120" BorderBrush="Black" VerticalContentAlignment="Center" Text="{Binding IP}" Margin="5,5,5,6" />
 
         <Label Grid.Row="2" Grid.Column="0" Content="Port number:" Width="110" Margin="0,2,0,33" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-        <TextBox Grid.Row="2" Grid.Column="2" Height="24" Width="120" BorderBrush="Black" VerticalContentAlignment="Center" Text="{Binding Port}" Margin="5,6,5,5" />
+        <TextBox Style="{StaticResource BaseTextBoxStyle}" Grid.Row="2" Grid.Column="2" Height="24" Width="120" BorderBrush="Black" VerticalContentAlignment="Center" Text="{Binding Port}" Margin="5,6,5,5" />
 
         <Label Grid.Row="3" Grid.Column="0" Content="Rows number:" Width="110" Margin="0,3,0,32" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-        <TextBox Grid.Row="3" Grid.Column="2" Height="24" Width="120" BorderBrush="Black" VerticalContentAlignment="Center" Text="{Binding Rows}" Margin="5,5,5,6" />
+        <TextBox Style="{StaticResource BaseTextBoxStyle}" Grid.Row="3" Grid.Column="2" Height="24" Width="120" BorderBrush="Black" VerticalContentAlignment="Center" Text="{Binding Rows}" Margin="5,5,5,6" />
 
-        <Label Grid.Row="4" Grid.Column="0" Content="Columns number:" Width="110" Margin="0,2,0,33" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-        <TextBox Grid.Row="4" Grid.Column="2" Height="24" Width="120" BorderBrush="Black" VerticalContentAlignment="Center" Text="{Binding Cols}" Margin="5,6,5,5" />
+        <Label Grid.Row="4" Grid.Column="0" Content="Columns number:" Width="110" Margin="0,3,0,32" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+        <TextBox Style="{StaticResource BaseTextBoxStyle}" Grid.Row="4" Grid.Column="2" Height="24" Width="120" BorderBrush="Black" VerticalContentAlignment="Center" Text="{Binding Cols}" Margin="5,6,5,5" />
 
         <Label Grid.Row="5" Grid.Column="0" Content="Search algorithm:" Width="110" Margin="0,2,0,33" Grid.ColumnSpan="2" Grid.RowSpan="2" />
         <ComboBox Grid.Column="2" HorizontalAlignment="Left" Margin="5,5,5,6" Grid.Row="5" VerticalAlignment="Top" Width="120" Height="24" SelectedIndex="{Binding Algorithm}">
@@ -27,7 +27,7 @@
             <ComboBoxItem Content="DFS"/>
         </ComboBox>
 
-        <Button x:Name="btn_save" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Width="120" Height="30" Margin="54.205,2,60,3" Content="Save" Click="btn_save_Click"/>
+        <Button x:Name="btn_save" Style="{StaticResource BaseButtonStyle}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="54.205,2,60,3" Content="Save" Click="btn_save_Click"/>
         
 
         <Grid.ColumnDefinitions>

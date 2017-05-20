@@ -4,11 +4,12 @@ namespace MazeGame.ViewModel.Interfaces
     public interface ISinglePlayerViewModel
     {
         // dummy comment for check in
-        Maze SingleMaze { get; }
+        Maze PlayerMaze { get; }
+        void PlayerMoved(object sender, string direction);
         int PlayerRow { set; get; }
         int PlayerColumn { set; get; }
-        void PlayerMoved(object sender, string direction);
+        char GetValueAtPos(Position pos);
         void Solve();
-        void Restart();
+
     }
 }

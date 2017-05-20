@@ -13,7 +13,7 @@ namespace MazeGame.View.ValueConverters
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             int y = (int)(values[0]);
-            double height = (double)(values[1]);
+            double height = (double)(values[1]) - 4;
             int rows_num = (int)(values[2]);
             return ((height / rows_num) * y);
         }

@@ -10,10 +10,10 @@
              d:DesignHeight="300" 
              d:DesignWidth="300"
              HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch">
+             VerticalAlignment="Stretch" Loaded="GameSurface_Loaded">
     <UserControl.Resources>
-        <ValueConverters:MazeToRectanglesConverter x:Key="MazeConverter"/>
-        <ValueConverters:ColorConverter x:Key="ColorConverter"/>
+        <ValueConverters:MazeToCellsConverter x:Key="MazeConverter"/>
+        <ValueConverters:CellsToFillConverter x:Key="FillConverter"/>
         <ValueConverters:YToHeightConverter x:Key="YConverter"/>
         <ValueConverters:XToWidthConverter x:Key="XConverter"/>
         <ValueConverters:WidthToCellConverter x:Key="CellConverter"/>
@@ -50,7 +50,13 @@
             <DataTemplate>
                 <Rectangle>
                     <Rectangle.Fill>
-                        <Binding Path="Color" Converter="{StaticResource ColorConverter}"/>
+                        <MultiBinding Converter="{StaticResource FillConverter}">
+                            <Binding Path="Fill"/>
+                            <Binding ElementName="uc" Path="DataContext.PlayerRow"/>
+                            <Binding ElementName="uc" Path="DataContext.PlayerColumn"/>
+                            <Binding Path="Y"/>
+                            <Binding Path="X"/>
+                        </MultiBinding>
                     </Rectangle.Fill>
                     <Rectangle.Width>
                         <MultiBinding Converter="{StaticResource CellConverter}">

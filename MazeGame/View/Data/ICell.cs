@@ -8,7 +8,7 @@ namespace MazeGame.View.Data
 {
     public interface ICell
     {
-        char Color { get; set; }
+        char Fill { get; set; }
         int Width { get; set; }
         int Height { get; set; }
         int X { get; set; }
