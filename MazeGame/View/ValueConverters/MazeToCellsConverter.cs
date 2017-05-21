@@ -3,12 +3,15 @@ using MazeLib;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace MazeGame.View.ValueConverters
 {
@@ -19,6 +22,9 @@ namespace MazeGame.View.ValueConverters
             ObservableCollection<ICell> cells = new ObservableCollection<ICell>();
 
             Maze maze = (Maze)(value);
+
+            if (maze == null)
+                return null;
 
             string representation = maze.ToString();
             Console.WriteLine(representation);

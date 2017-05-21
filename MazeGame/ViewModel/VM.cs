@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MazeLib;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Windows.Input;
+using System.ComponentModel;
 
 namespace MazeGame.ViewModel
 {
@@ -17,10 +20,17 @@ namespace MazeGame.ViewModel
         private int player_col;
         private string rep;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public VM()
         {
             this.mazer = new MazeGeneratorLib.DFSMazeGenerator();
-            this.maze = this.mazer.Generate(20, 35);
+
+        }
+
+        public void create(object sender, MouseButtonEventArgs e)
+        {
+            this.maze = this.mazer.Generate(3, 4);
             this.maze.Name = "Uriah";
             this.rep = this.maze.ToString();
             this.rep = Regex.Replace(this.rep, @"\t|\n|\r", "");
@@ -30,9 +40,11 @@ namespace MazeGame.ViewModel
 
             this.player_row = this.maze.InitialPos.Row;
             this.player_col = this.maze.InitialPos.Col;
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs("PlayerMaze"));
         }
 
-        public Maze SingleMaze
+        public Maze PlayerMaze
         {
             get
             {
@@ -61,8 +73,6 @@ namespace MazeGame.ViewModel
                 this.player_col = value;
             }
         }
-
-        public Maze PlayerMaze => throw new NotImplementedException();
 
         public char GetValueAtPos(Position pos)
         {

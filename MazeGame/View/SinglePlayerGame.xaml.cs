@@ -23,5 +23,7 @@ namespace MazeGame.View
         {
             InitializeComponent();
         }
+
+
     }
 }

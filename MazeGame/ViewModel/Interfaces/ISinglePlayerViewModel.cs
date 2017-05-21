@@ -1,7 +1,10 @@
 ﻿using MazeLib;
+using System.ComponentModel;
+using System.Windows.Input;
+
 namespace MazeGame.ViewModel.Interfaces
 {
-    public interface ISinglePlayerViewModel
+    public interface ISinglePlayerViewModel : INotifyPropertyChanged
     {
         // dummy comment for check in
         Maze PlayerMaze { get; }
@@ -10,6 +13,6 @@ namespace MazeGame.ViewModel.Interfaces
         int PlayerColumn { set; get; }
         char GetValueAtPos(Position pos);
         void Solve();
-
+        void create(object sender, MouseButtonEventArgs e);
     }
 }

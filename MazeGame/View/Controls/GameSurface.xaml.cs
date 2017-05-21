@@ -30,6 +30,7 @@ namespace MazeGame.View.Controls
             InitializeComponent();
             this.vm = new VM();
             this.DataContext = this.vm;
+            
         }
 
 
@@ -67,6 +68,8 @@ namespace MazeGame.View.Controls
         {
             var parent = Window.GetWindow(this);
             parent.KeyDown += this.GameSurface_KeyDown;
+            parent.MouseDown += vm.create;
+            
         }
 
     }

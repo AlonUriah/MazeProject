@@ -10,7 +10,8 @@
              d:DesignHeight="300" 
              d:DesignWidth="300"
              HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch" Loaded="GameSurface_Loaded">
+             VerticalAlignment="Stretch" 
+             Loaded="GameSurface_Loaded">
     <UserControl.Resources>
         <ValueConverters:MazeToCellsConverter x:Key="MazeConverter"/>
         <ValueConverters:CellsToFillConverter x:Key="FillConverter"/>
@@ -18,7 +19,7 @@
         <ValueConverters:XToWidthConverter x:Key="XConverter"/>
         <ValueConverters:WidthToCellConverter x:Key="CellConverter"/>
     </UserControl.Resources>
-    <ItemsControl ItemsSource="{Binding SingleMaze, Converter={StaticResource MazeConverter}}">
+    <ItemsControl ItemsSource="{Binding PlayerMaze, Converter={StaticResource MazeConverter}, TargetNullValue=}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
                 <Canvas/>
@@ -31,7 +32,7 @@
                         <MultiBinding Converter="{StaticResource XConverter}">
                             <Binding Path="X"/>
                             <Binding ElementName="uc" Path="ActualWidth"/>
-                            <Binding ElementName="uc" Path="DataContext.SingleMaze.Cols"/>
+                            <Binding ElementName="uc" Path="DataContext.PlayerMaze.Cols"/>
                         </MultiBinding>
                     </Setter.Value>
                 </Setter>
@@ -40,7 +41,7 @@
                         <MultiBinding Converter="{StaticResource YConverter}">
                             <Binding Path="Y"/>
                             <Binding ElementName="uc" Path="ActualHeight"/>
-                            <Binding ElementName="uc" Path="DataContext.SingleMaze.Rows"/>
+                            <Binding ElementName="uc" Path="DataContext.PlayerMaze.Rows"/>
                         </MultiBinding>
                     </Setter.Value>
                 </Setter>
@@ -61,13 +62,13 @@
                     <Rectangle.Width>
                         <MultiBinding Converter="{StaticResource CellConverter}">
                             <Binding ElementName="uc" Path="ActualWidth"/>
-                            <Binding ElementName="uc" Path="DataContext.SingleMaze.Cols"/>
+                            <Binding ElementName="uc" Path="DataContext.PlayerMaze.Cols"/>
                         </MultiBinding>
                     </Rectangle.Width>
                     <Rectangle.Height>
                         <MultiBinding Converter="{StaticResource CellConverter}">
                             <Binding ElementName="uc" Path="ActualHeight"/>
-                            <Binding ElementName="uc" Path="DataContext.SingleMaze.Rows"/>
+                            <Binding ElementName="uc" Path="DataContext.PlayerMaze.Rows"/>
                         </MultiBinding>
                     </Rectangle.Height>
                 </Rectangle>

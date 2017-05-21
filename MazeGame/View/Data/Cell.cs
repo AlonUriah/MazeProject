@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace MazeGame.View.Data
             this.fill = fill;
             this.x = x;
             this.y = y;
+
         }
 
         public int X
@@ -80,5 +82,6 @@ namespace MazeGame.View.Data
                 this.fill = value;
             }
         }
+
     }
 }
