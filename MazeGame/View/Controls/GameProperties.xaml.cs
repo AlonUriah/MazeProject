@@ -30,7 +30,15 @@ namespace MazeGame.View.Controls
 
         private void btn_startgame_Click(object sender, RoutedEventArgs e)
         {
+            Window wdw = Window.GetWindow(this);
+            
+            // Validate details
+            // Save to settings
+            // Launch the next window: multi/single
 
+            /*if (wdw.Name == "wdw_single")
+
+            else if (wdw.Name == "wdw_multi")*/
         }
     }
 }

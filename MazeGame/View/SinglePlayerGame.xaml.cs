@@ -23,7 +23,7 @@ namespace MazeGame.View
         {
             InitializeComponent();
         }
-
+        // Awaiting for maze behavior
 
     }
 }

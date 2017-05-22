@@ -30,34 +30,25 @@ namespace MazeGame.View.Controls
             InitializeComponent();
             this.vm = new VM();
             this.DataContext = this.vm;
-            
+
         }
 
 
         private void GameSurface_KeyDown(object sender, KeyEventArgs e)
         {
-            char val;
             switch (e.Key)
             {
                 case Key.Up:
-                    val = this.vm.GetValueAtPos(new Position(this.vm.PlayerRow - 1, this.vm.PlayerColumn));
-                    if (val == '0')
-                        this.vm.PlayerRow--;
+                    this.vm.PlayerMoved(this.Name, "up");
                     break;
                 case Key.Down:
-                    val = this.vm.GetValueAtPos(new Position(this.vm.PlayerRow + 1, this.vm.PlayerColumn));
-                    if (val == '0')
-                        this.vm.PlayerRow++;
+                    this.vm.PlayerMoved(this.Name, "down");
                     break;
                 case Key.Right:
-                    val = this.vm.GetValueAtPos(new Position(this.vm.PlayerRow, this.vm.PlayerColumn + 1));
-                    if (val == '0')
-                        this.vm.PlayerColumn++;
+                    this.vm.PlayerMoved(this.Name, "right");
                     break;
                 case Key.Left:
-                    val = this.vm.GetValueAtPos(new Position(this.vm.PlayerRow, this.vm.PlayerColumn - 1));
-                    if (val == '0')
-                        this.vm.PlayerColumn--;
+                    this.vm.PlayerMoved(this.Name, "left");
                     break;
                 default:
                     break;
@@ -66,10 +57,11 @@ namespace MazeGame.View.Controls
         }
         private void GameSurface_Loaded(object sender, RoutedEventArgs e)
         {
-            var parent = Window.GetWindow(this);
-            parent.KeyDown += this.GameSurface_KeyDown;
+            Window parent = Window.GetWindow(this);
+            if (this.Name == "player")
+                parent.KeyDown += this.GameSurface_KeyDown;
             parent.MouseDown += vm.create;
-            
+
         }
 
     }

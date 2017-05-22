@@ -21,7 +21,7 @@ namespace MazeGame.View.ValueConverters
             }
             catch (Exception e)
             {
-                return 0;
+                return null;
             }
         }
 

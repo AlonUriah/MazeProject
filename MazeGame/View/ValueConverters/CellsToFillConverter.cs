@@ -48,7 +48,7 @@ namespace MazeGame.View.ValueConverters
             }
             catch (Exception e)
             {
-                return new SolidColorBrush(Colors.White);
+                return null;//new SolidColorBrush(Colors.White);
             }
         }
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

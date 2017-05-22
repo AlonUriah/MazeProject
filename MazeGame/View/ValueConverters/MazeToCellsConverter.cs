@@ -19,12 +19,14 @@ namespace MazeGame.View.ValueConverters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            ObservableCollection<ICell> cells = new ObservableCollection<ICell>();
 
             Maze maze = (Maze)(value);
 
             if (maze == null)
                 return null;
+
+
+            ObservableCollection<ICell> cells = new ObservableCollection<ICell>();
 
             string representation = maze.ToString();
             Console.WriteLine(representation);

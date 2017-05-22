@@ -95,6 +95,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MultiPlayerGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MultiplayerMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +140,9 @@
     <Compile Include="View\Data\ICell.cs" />
     <Compile Include="View\Events\IPlayerMovedEventHandler.cs" />
     <Compile Include="View\Events\PlayerMovedEventArgs.cs" />
+    <Compile Include="View\MultiPlayerGame.xaml.cs">
+      <DependentUpon>MultiPlayerGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MultiplayerMenu.xaml.cs">
       <DependentUpon>MultiplayerMenu.xaml</DependentUpon>
     </Compile>

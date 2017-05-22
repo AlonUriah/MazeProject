@@ -60,6 +60,7 @@ namespace MazeGame.ViewModel
             set
             {
                 this.player_row = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("PlayerRow"));
             }
         }
         public int PlayerColumn
@@ -71,6 +72,7 @@ namespace MazeGame.ViewModel
             set
             {
                 this.player_col = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("PlayerColumn"));
             }
         }
 
@@ -81,7 +83,14 @@ namespace MazeGame.ViewModel
 
         public void PlayerMoved(object sender, string direction)
         {
-            throw new NotImplementedException();
+            if (direction == "up" && GetValueAtPos(new Position(PlayerRow - 1, PlayerColumn)) == '0')
+                PlayerRow--;
+            if (direction == "down" && GetValueAtPos(new Position(PlayerRow + 1, PlayerColumn)) == '0')
+                PlayerRow++;
+            if (direction == "right" && GetValueAtPos(new Position(PlayerRow, PlayerColumn + 1)) == '0')
+                PlayerColumn++;
+            if (direction == "left" && GetValueAtPos(new Position(PlayerRow, PlayerColumn - 1)) == '0')
+                PlayerColumn--;
         }
 
         public void Restart()

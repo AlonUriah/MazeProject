@@ -19,10 +19,10 @@
         <ValueConverters:XToWidthConverter x:Key="XConverter"/>
         <ValueConverters:WidthToCellConverter x:Key="CellConverter"/>
     </UserControl.Resources>
-    <ItemsControl ItemsSource="{Binding PlayerMaze, Converter={StaticResource MazeConverter}, TargetNullValue=}">
+    <ItemsControl ItemsSource="{Binding PlayerMaze, Converter={StaticResource MazeConverter}}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-                <Canvas/>
+                <Canvas x:Name="cv"/>
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemContainerStyle>

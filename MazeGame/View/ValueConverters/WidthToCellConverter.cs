@@ -20,7 +20,7 @@ namespace MazeGame.View.ValueConverters
             }
             catch (Exception e)
             {
-                return 0;
+                return null;
             }
         }
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

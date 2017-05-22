@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MazeGame.ViewModel.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,25 +11,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MazeGame.View.Controls
+namespace MazeGame.View
 {
     /// <summary>
-    /// Interaction logic for GameList.xaml
+    /// Interaction logic for MultiPlayerGame.xaml
     /// </summary>
-    public partial class GameList : UserControl
+    public partial class MultiPlayerGame : Window
     {
-        public GameList()
+        IMultiplayerViewModel vm;
+        public MultiPlayerGame()
         {
             InitializeComponent();
+            // new VM
+            // define datacontext
+            // listen to opponent location
+            // Display Awaiting for opponent logic
+            // 
         }
-
-        // Connect to the server
-        // Bind the list to the list of games
-        // Refresh logic buttons
-        // Join logic button
-        // Open the new Mutliplayer window
     }
 }
