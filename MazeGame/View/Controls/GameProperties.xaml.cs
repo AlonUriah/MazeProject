@@ -26,6 +26,7 @@ namespace MazeGame.View.Controls
         public GameProperties()
         {
             InitializeComponent();
+            this.DataContext = Properties.Settings.Default;
         }
 
         private void btn_startgame_Click(object sender, RoutedEventArgs e)
