@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MazeGame.ViewModel.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,29 @@ namespace MazeGame.View
     /// </summary>
     public partial class SinglePlayerGame : Window
     {
-        public SinglePlayerGame()
+        private ISinglePlayerViewModel vm;
+        private Window parent;
+
+        public SinglePlayerGame(ISinglePlayerViewModel vm, Window parent)
         {
             InitializeComponent();
+            this.parent = parent; 
+            this.vm = vm;
+        }
+
+        private void btn_restart_Click(object sender, RoutedEventArgs e)
+        {
+            this.vm.Restart();
+        }
+
+        private void btn_solve_Click(object sender, RoutedEventArgs e)
+        {
+            this.vm.Solve();
+        }
+
+        private void btn_quit_Click(object sender, RoutedEventArgs e)
+        {
+            this.vm.Close();
         }
         // Awaiting for maze behavior
 

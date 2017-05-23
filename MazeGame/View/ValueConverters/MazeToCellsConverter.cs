@@ -20,7 +20,7 @@ namespace MazeGame.View.ValueConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
 
-            Maze maze = (Maze)(value);
+            MazeWrapper maze = (MazeWrapper)(value);
 
             if (maze == null)
                 return null;
@@ -28,10 +28,8 @@ namespace MazeGame.View.ValueConverters
 
             ObservableCollection<ICell> cells = new ObservableCollection<ICell>();
 
-            string representation = maze.ToString();
-            Console.WriteLine(representation);
-            representation = Regex.Replace(representation, @"\t|\n|\r", "");
-
+            string representation = maze.MazeStr;
+            
             for (int i = 0; i < maze.Rows; i++)
                 for (int j = 0; j < maze.Cols; j++)
                     cells.Add(new Cell(j, i, representation[i * maze.Cols + j]));

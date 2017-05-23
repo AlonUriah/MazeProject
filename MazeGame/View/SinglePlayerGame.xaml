@@ -22,9 +22,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">
-            <Button Style="{StaticResource BaseButtonStyle}">Restart Game</Button>
-            <Button Style="{StaticResource BaseButtonStyle}">Solve Maze</Button>
-            <Button Style="{StaticResource BaseButtonStyle}">Quit Game</Button>
+            <Button x:Name="btn_restart" Click="btn_restart_Click" Style="{StaticResource BaseButtonStyle}">Restart Game</Button>
+            <Button x:Name="btn_solve" Style="{StaticResource BaseButtonStyle}" Click="btn_solve_Click">Solve Maze</Button>
+            <Button x:Name="btn_quit" Style="{StaticResource BaseButtonStyle}" Click="btn_quit_Click">Quit Game</Button>
         </StackPanel>
 
         <Grid Grid.Row="1" Grid.Column="0">
