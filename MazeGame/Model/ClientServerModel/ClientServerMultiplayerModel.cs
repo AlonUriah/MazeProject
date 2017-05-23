@@ -29,10 +29,9 @@ namespace MazeGame.Model.ClientServerModel
             var query = string.Format(PLAY_COMMAND, direction);
             _client.Broadcast(query);
 
-            int winnerId;
-            if(IsAnyoneWon(out winnerId))
+            if (DidWin(PlayerRow, PlayerColumn, 1))
             {
-                // do something
+           
             }
         }
 
@@ -87,10 +86,9 @@ namespace MazeGame.Model.ClientServerModel
                     break;
             }
 
-            int winnerId;
-            if (IsAnyoneWon(out winnerId))
+            if (DidWin(RivalRow, RivalRow, 2))
             {
-                // do something
+              
             }
         }
 
