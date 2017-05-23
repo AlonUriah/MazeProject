@@ -7,7 +7,7 @@
         xmlns:controls="clr-namespace:MazeGame.View.Controls"
         mc:Ignorable="d"
         Title="Single-Player Menu" Height="300" Width="300" WindowStartupLocation="CenterScreen" Closing="wdw_singlemenu_Close">
-    <controls:GameProperties Margin="0,45,0,0">
+    <controls:GameProperties x:Name="game_properties" Margin="0,45,0,0">
         
     </controls:GameProperties>
 </Window>

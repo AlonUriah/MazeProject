@@ -21,25 +21,10 @@ namespace MazeGame.View.Controls
     public partial class GameProperties : UserControl
     {
 
-
-
         public GameProperties()
         {
             InitializeComponent();
             this.DataContext = Properties.Settings.Default;
-        }
-
-        private void btn_startgame_Click(object sender, RoutedEventArgs e)
-        {
-            Window wdw = Window.GetWindow(this);
-            
-            // Validate details
-            // Save to settings
-            // Launch the next window: multi/single
-
-            /*if (wdw.Name == "wdw_single")
-
-            else if (wdw.Name == "wdw_multi")*/
         }
     }
 }
