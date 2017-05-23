@@ -1,4 +1,5 @@
-﻿using MazeGame.ViewModel.Interfaces;
+﻿using MazeGame.ViewModel;
+using MazeGame.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

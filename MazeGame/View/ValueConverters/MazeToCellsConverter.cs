@@ -1,4 +1,5 @@
-﻿using MazeGame.View.Data;
+﻿using MazeGame.Common;
+using MazeGame.View.Data;
 using MazeLib;
 using System;
 using System.Collections.Generic;
