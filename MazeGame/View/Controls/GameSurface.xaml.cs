@@ -60,8 +60,6 @@ namespace MazeGame.View.Controls
             Window parent = Window.GetWindow(this);
             if (this.Name == "player")
                 parent.KeyDown += this.GameSurface_KeyDown;
-            parent.MouseDown += vm.create;
-
         }
 
     }

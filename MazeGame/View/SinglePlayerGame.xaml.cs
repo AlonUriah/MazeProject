@@ -38,9 +38,16 @@ namespace MazeGame.View
         private void btn_solve_Click(object sender, RoutedEventArgs e)
         {
             this.vm.Solve();
+            this.btn_solve.IsEnabled = false;
+            this.btn_restart.IsEnabled = false;
         }
 
         private void btn_quit_Click(object sender, RoutedEventArgs e)
+        {
+            this.vm.Close();
+        }
+
+        private void wdw_single_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             this.vm.Close();
         }
