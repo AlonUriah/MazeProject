@@ -35,6 +35,8 @@ namespace MazeGame.View
         private void btn_startgame_Click(object sender, RoutedEventArgs e)
         {
             ISinglePlayerViewModel vm = this.single_vm.StartGame();
+            this.single_vm.MazeName = this.game_properties.txt_gamename;
+            this.single_vm. = this.game_properties.txt_rows;
             if (vm == null)
             {
                 MessageBox.Show("Invalid input!");

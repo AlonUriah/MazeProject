@@ -37,3 +37,4 @@ C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\MedallionPrio
 C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.xml
 C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.dll
 C:\Users\U1\Source\Repos\MazeProject\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.pdb
+C:\Users\p0022491\Source\Repos\MazeProject\SearchAlgorithmsLib\obj\Debug\SearchAlgorithmsLib.csprojResolveAssemblyReference.cache
