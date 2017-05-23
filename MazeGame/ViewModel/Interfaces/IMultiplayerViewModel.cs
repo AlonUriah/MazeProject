@@ -2,7 +2,7 @@
 using MazeGame.Common;
 namespace MazeGame.ViewModel.Interfaces
 {
-    public interface IMultiplayerViewModel
+    public interface IMultiPlayerViewModel
     {
         void PlayerMoved(object sender, string direction);
         MazeWrapper PlayerMaze { set; get; }

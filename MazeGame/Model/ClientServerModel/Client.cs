@@ -19,9 +19,8 @@ namespace MazeGame.Model.ClientServerModel
      */
     public class Client
     {
-        private const int SUCCESS_CODE = 1;
-        private const int FAIL_CODE = 0;
-        private const int EXIT_CODE = 2;
+        private const int ERROR_CODE = 0;
+        private const int LOADING_CODE = 2;
 
         // Connection is alive or not
         private bool _connected;
@@ -171,7 +170,7 @@ namespace MazeGame.Model.ClientServerModel
                 {
                     _connected = false;
                     _exit = true;
-                    return EXIT_CODE;
+                    return ERROR_CODE;
                 }
 
                 // If there is no connection alive, create it.
@@ -188,13 +187,13 @@ namespace MazeGame.Model.ClientServerModel
                  */
                 _streamWriter.WriteLine(query);
                 _streamWriter.Flush();
-                return SUCCESS_CODE;
+                return LOADING_CODE;
             }
             catch (Exception)
             {
                 _connected = false;
                 _exit = true;
-                return FAIL_CODE;
+                return ERROR_CODE;
             }
         }
 
@@ -206,7 +205,8 @@ namespace MazeGame.Model.ClientServerModel
          */
         public void Exit()
         {
-            _exit = true;
+            _connected = false;
+            _tcpClient.Close();
         }
     }
 }

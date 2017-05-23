@@ -1,6 +1,7 @@
 ﻿using MazeLib;
 using MazeGame.ViewModel.Interfaces;
 using MazeGame.Common;
+using System;
 
 namespace MazeGame.ViewModel
 {
@@ -42,9 +43,13 @@ namespace MazeGame.ViewModel
                 OnPlayerMoved.Invoke(sender, direction);
         }
 
+        abstract public void Close();
         abstract public void Restart();
         abstract public void Solve();
         abstract public char GetValueAtPos(Position pos);
         abstract public MazeWrapper PlayerMaze { set; get; }
+        public int Status { protected set; get; }
+
+        public bool DidWin { protected set; get; } = false;
     }
 }

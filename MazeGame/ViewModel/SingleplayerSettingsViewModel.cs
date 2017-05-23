@@ -4,7 +4,7 @@ using MazeGame.ViewModel.Interfaces;
 
 namespace MazeGame.ViewModel
 {
-    public class SingleplayerSettingsViewModel : ISingleplayerSettingsViewModel
+    public class SinglePlayerSettingsViewModel : ISinglePlayerSettingsViewModel
     {
         private string _mazeRowsStr;
         private string _mazeColsStr; 
@@ -25,8 +25,6 @@ namespace MazeGame.ViewModel
                     MazeRows = mazeRows;
                     return;
                 }
-
-                //Alert
             }
         }
         public string MazeColsStr
@@ -44,16 +42,24 @@ namespace MazeGame.ViewModel
                     MazeCols = mazeCols;
                     return;
                 }
-
-                //Alert
             }
         }
 
         public int MazeRows { private set; get; }
         public int MazeCols { private set; get; }
 
+        private bool IsValidInputs()
+        {
+            if (MazeCols <= 0 || MazeRows <= 0 || string.IsNullOrWhiteSpace(MazeName))
+                return false;
+
+            return true;
+        }
+
         public ISinglePlayerViewModel StartGame()
         {
+            if (!IsValidInputs()) return null;
+
             ISingleplayerModel singleModel = ModelFactory.Instace.GetSinglePlayerModel();
             return new SinglePlayerViewModel(singleModel, MazeName, MazeRows, MazeCols);
         }

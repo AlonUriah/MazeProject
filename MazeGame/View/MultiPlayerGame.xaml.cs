@@ -20,7 +20,7 @@ namespace MazeGame.View
     /// </summary>
     public partial class MultiPlayerGame : Window
     {
-        IMultiplayerViewModel vm;
+        IMultiPlayerViewModel vm;
         public MultiPlayerGame()
         {
             InitializeComponent();

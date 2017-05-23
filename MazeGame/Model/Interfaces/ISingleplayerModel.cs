@@ -7,7 +7,7 @@
     {
         event SolutionReceivedHandler OnSolutionReceived;
         event GenerateGameHandler OnGameReceived;
-        void SolveMaze(string mazeName, string algorithm);
-        void CreateNewGame(string gameName, int mazeRows, int mazeCols);
+        void SolveMaze(string mazeName, int algorithm);
+        int CreateNewGame(string gameName, int mazeRows, int mazeCols);
     }
 }
