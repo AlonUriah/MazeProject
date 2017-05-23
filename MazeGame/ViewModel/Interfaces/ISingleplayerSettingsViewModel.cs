@@ -1,6 +1,6 @@
 ﻿namespace MazeGame.ViewModel.Interfaces
 {
-    public interface ISingleplayerSettingsViewModel
+    public interface ISinglePlayerSettingsViewModel
     {
         string MazeName { set; get; }
         int MazeRows { get; }

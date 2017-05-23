@@ -22,27 +22,6 @@ namespace MazeGame.Model.ClientServerModel
         public ClientServerMultiplayerModel(Client client, string gameName, int mazeRows, int mazeCols) : base(client) { }
         public ClientServerMultiplayerModel(string gameName, int mazeRows, int mazeCols) : base() { }
 
-        private bool IsAnyoneWon(out int player)
-        {
-            int goalRow = PlayerMaze.EndRow;
-            int goalCol = PlayerMaze.EndCol;
-
-            if(PlayerColumn == goalCol && PlayerRow == goalCol)
-            {
-                player = PLAYER;
-                return true;
-            }
-
-            if(RivalColumn == goalCol && RivalRow == goalRow)
-            {
-                player = RIVAL;
-                return true;
-            }
-
-            player = -1;
-            return false;
-        }
-
         public override void Move(string direction)
         {
             base.Move(direction);

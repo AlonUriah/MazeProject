@@ -5,7 +5,7 @@ using MazeLib;
 
 namespace MazeGame.ViewModel
 {
-    abstract class MultiplayerViewModelBase : IMultiplayerViewModel
+    abstract class MultiplayerViewModelBase : IMultiPlayerViewModel
     {
         private int _opponentRow;
         private int _opponentCol;

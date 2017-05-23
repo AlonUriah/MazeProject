@@ -12,8 +12,8 @@ namespace MazeGame.Model
 
         private ModelFactory()
         {
-            string ipAddressStr = ConfigurationManager.AppSettings["IpAddress"];
-            string portStr = ConfigurationManager.AppSettings["PortNumber"];
+            string ipAddressStr = Properties.Settings.Default.IP;
+            string portStr = Properties.Settings.Default.Port;
             _client = new Client(ipAddressStr, portStr);
         }
 

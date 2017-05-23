@@ -25,6 +25,7 @@ namespace MazeGame.Model.ClientServerModel
         protected MazeWrapper PlayerMaze { set; get; }
         protected int PlayerRow { set; get; }
         protected int PlayerColumn { set; get; }
+        protected int PlayerWonId = -1;
 
         public ClientServerSingleplayerModel() : base ()
         {
@@ -46,11 +47,11 @@ namespace MazeGame.Model.ClientServerModel
             CreateNewGame(gameName, mazeRows, mazeCols);
         }
 
-        public void CreateNewGame(string gameName, int mazeRows, int mazeCols)
+        public int CreateNewGame(string gameName, int mazeRows, int mazeCols)
         {
             IsLoading = true;
             var query = string.Format(CREATE_NEW_GAME_COMMAND, gameName, mazeRows, mazeCols);
-            _client.Broadcast(query);
+            return _client.Broadcast(query);
         }
         protected virtual void UpdateMaze(object sender, string gameJason)
         {
@@ -101,21 +102,31 @@ namespace MazeGame.Model.ClientServerModel
             }
         }
 
+        protected bool DidWin(int row, int column, int playerID)
+        {
+            if(PlayerMaze.EndRow == row && PlayerMaze.EndCol == column)
+            {
+                if(PlayerWonId == -1)
+                {
+                    PlayerWonId = playerID;
+                }
+
+                return true;
+            }
+
+            return false;
+        }
         protected bool IsValidMove(string direction)
         {
             throw new NotImplementedException();
         }
 
-        public void SolveMaze(string mazeName, string algorithm)
+        public void SolveMaze(string mazeName, int algorithm)
         {
-            if (!algorithm.EqualsLower("BFS") && !algorithm.EqualsLower("DFS"))
-            {
-                //Warn
-                return;
-            }
+            if (algorithm != 0 && algorithm != 1) return;
 
             IsLoading = true;
-            var query = string.Format(SOLVE_COMMAND, mazeName, (algorithm.EqualsLower("BFS")) ? 0 : 1);
+            var query = string.Format(SOLVE_COMMAND, mazeName, algorithm);
             _client.Broadcast(query);
         }
 

@@ -11,5 +11,8 @@ namespace MazeGame.ViewModel.Interfaces
         int PlayerColumn { set; get; }
         char GetValueAtPos(Position pos);
         void Solve();
+        void Close();
+        int Status { get; }
+        bool DidWin { get; }
     }
 }

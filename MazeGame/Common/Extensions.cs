@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace MazeGame.Common
 {
@@ -12,24 +13,31 @@ namespace MazeGame.Common
 
         public static MazeWrapper ToMazeWrapper(this JObject jObject)
         {
-            var mazeWrapper = new MazeWrapper();
-            mazeWrapper.Name = jObject["Name"].ToObject<string>();
+            try
+            {
+                var mazeWrapper = new MazeWrapper();
+                mazeWrapper.Name = jObject["Name"].ToObject<string>();
 
-            string tempStr = jObject["Maze"].ToObject<string>();
+                string tempStr = jObject["Maze"].ToObject<string>();
 
-            mazeWrapper.MazeStr = Regex.Replace(tempStr, @"\t|\r|\n", string.Empty);
-            mazeWrapper.Cols = jObject["Cols"].ToObject<int>();
-            mazeWrapper.Rows = jObject["Rows"].ToObject<int>();
+                mazeWrapper.MazeStr = Regex.Replace(tempStr, @"\t|\r|\n", string.Empty);
+                mazeWrapper.Cols = jObject["Cols"].ToObject<int>();
+                mazeWrapper.Rows = jObject["Rows"].ToObject<int>();
 
-            JObject startPos = (JObject)jObject["Start"];
-            mazeWrapper.StartCol = startPos["Col"].ToObject<int>();
-            mazeWrapper.StartRow = startPos["Row"].ToObject<int>();
+                JObject startPos = (JObject)jObject["Start"];
+                mazeWrapper.StartCol = startPos["Col"].ToObject<int>();
+                mazeWrapper.StartRow = startPos["Row"].ToObject<int>();
 
-            JObject endPos = (JObject)jObject["End"];
-            mazeWrapper.EndCol = endPos["Col"].ToObject<int>();
-            mazeWrapper.EndRow = endPos["Row"].ToObject<int>();
+                JObject endPos = (JObject)jObject["End"];
+                mazeWrapper.EndCol = endPos["Col"].ToObject<int>();
+                mazeWrapper.EndRow = endPos["Row"].ToObject<int>();
 
-            return mazeWrapper;
+                return mazeWrapper;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }
