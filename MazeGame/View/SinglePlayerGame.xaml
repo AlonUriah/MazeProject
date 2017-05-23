@@ -11,7 +11,8 @@
         Height="500" 
         Width="400"
         MinWidth="200" 
-        MinHeight="250">
+        MinHeight="250"
+        Closing="wdw_single_Closing">
 
     <Grid>
         <Grid.RowDefinitions>

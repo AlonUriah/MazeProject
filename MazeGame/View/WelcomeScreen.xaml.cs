@@ -1,6 +1,7 @@
 ﻿using MazeGame.View;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,10 @@ namespace MazeGame
             Window multiplayer = new MultiplayerMenu(this);
             this.Hide();
             multiplayer.ShowDialog();
+        }
+
+        private void wdw_welcome_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
         }
     }
 }

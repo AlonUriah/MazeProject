@@ -1,4 +1,4 @@
-﻿<Window x:Class="MazeGame.MainWindow"
+﻿<Window x:Name="wdw_welcome" x:Class="MazeGame.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MazeGame"
         mc:Ignorable="d"
         FlowDirection="LeftToRight"
-        Title="Maze Game" Height="350" Width="300" WindowStartupLocation="CenterScreen">
+        Title="Maze Game" Height="350" Width="300" WindowStartupLocation="CenterScreen" Closing="wdw_welcome_Closing">
     <DockPanel TextBlock.FontSize="16">
         <Grid DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80">
             <Image Grid.Column="0" Source="./Resources/Logo.jpg" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="70" Margin="0,20,0,-10" />

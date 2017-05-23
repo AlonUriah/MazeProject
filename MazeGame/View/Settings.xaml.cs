@@ -40,7 +40,6 @@ namespace MazeGame.View
 
         private void wdw_settings_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Properties.Settings.Default.Reload();
             parent.Show();
         }
     }
