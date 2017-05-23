@@ -10,8 +10,7 @@
              d:DesignHeight="300" 
              d:DesignWidth="300"
              HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch" 
-             Loaded="GameSurface_Loaded">
+             VerticalAlignment="Stretch">
     <UserControl.Resources>
         <ValueConverters:MazeToCellsConverter x:Key="MazeConverter"/>
         <ValueConverters:CellsToFillConverter x:Key="FillConverter"/>

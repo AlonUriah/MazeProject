@@ -26,8 +26,32 @@ namespace MazeGame.View
         public SinglePlayerGame(ISinglePlayerViewModel vm, Window parent)
         {
             InitializeComponent();
-            this.parent = parent; 
+            this.parent = parent;
             this.vm = vm;
+            this.player.DataContext = this.vm;
+            if (this.player.Name == "player")
+                this.KeyDown += this.GameSurface_KeyDown;
+        }
+
+        private void GameSurface_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Up:
+                    this.vm.PlayerMoved(this.Name, "up");
+                    break;
+                case Key.Down:
+                    this.vm.PlayerMoved(this.Name, "down");
+                    break;
+                case Key.Right:
+                    this.vm.PlayerMoved(this.Name, "right");
+                    break;
+                case Key.Left:
+                    this.vm.PlayerMoved(this.Name, "left");
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void btn_restart_Click(object sender, RoutedEventArgs e)
