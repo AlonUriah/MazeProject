@@ -61,7 +61,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Server\MazeLib.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>H:\Documents\Visual Studio 2012\Projects\AP2_Sol\SearchAlgorithmsLib\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -119,14 +123,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="ViewModel\GameEvents\PlayEvent.cs" />
-    <Compile Include="ViewModel\GameEvents\SettingsSavedEvent.cs" />
+    <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Common\MazeWrapper.cs" />
+    <Compile Include="Model\ClientServerModel\Client.cs" />
+    <Compile Include="Model\ClientServerModel\ClientServerModelBase.cs" />
+    <Compile Include="Model\ClientServerModel\ClientServerMultiplayerModel.cs" />
+    <Compile Include="Model\ClientServerModel\ClientServerSingleplayerModel.cs" />
+    <Compile Include="Model\ClientServerModel\MultiplayerSettingModel.cs" />
+    <Compile Include="Model\IMazeModel.cs" />
+    <Compile Include="Model\Interfaces\IGameModel.cs" />
+    <Compile Include="Model\Interfaces\IMultiplayerModel.cs" />
+    <Compile Include="Model\Interfaces\IMultiplayerSettingsModel.cs" />
+    <Compile Include="Model\Interfaces\ISingleplayerModel.cs" />
+    <Compile Include="Model\ModelFactory.cs" />
+    <Compile Include="ViewModel\Interfaces\IMultiplayerSettingsViewModel.cs" />
     <Compile Include="ViewModel\Interfaces\IMultiplayerViewModel.cs" />
+    <Compile Include="ViewModel\Interfaces\ISingleplayerSettingsViewModel.cs" />
     <Compile Include="ViewModel\Interfaces\ISinglePlayerViewModel.cs" />
-    <Compile Include="ViewModel\MazeViewModel.cs" />
-    <Compile Include="Model\IModel.cs" />
-    <Compile Include="Model\MazeModel.cs" />
-    <Compile Include="ViewModel\VM.cs" />
+    <Compile Include="ViewModel\MultiplayerSettingsViewModel.cs" />
+    <Compile Include="ViewModel\MultiplayerViewModel.cs" />
+    <Compile Include="ViewModel\MultiplayerViewModelBase.cs" />
+    <Compile Include="ViewModel\SingleplayerSettingsViewModel.cs" />
+    <Compile Include="ViewModel\SinglePlayerViewModel.cs" />
+    <Compile Include="ViewModel\SinglePlayerViewModelBase.cs" />
     <Compile Include="View\Controls\GameList.xaml.cs">
       <DependentUpon>GameList.xaml</DependentUpon>
     </Compile>
@@ -212,6 +231,7 @@
     <Resource Include="View\Resources\player.png" />
     <Resource Include="View\Resources\start.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

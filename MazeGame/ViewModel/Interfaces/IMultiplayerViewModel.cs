@@ -1,11 +1,11 @@
 ﻿using MazeLib;
+using MazeGame.Common;
 namespace MazeGame.ViewModel.Interfaces
 {
     public interface IMultiplayerViewModel
     {
-        //dummy comment for check in
         void PlayerMoved(object sender, string direction);
-        Maze PlayerMaze { set; get; }
+        MazeWrapper PlayerMaze { set; get; }
         int PlayerRow { set; get; }
         int PlayerColumn { set; get; }
         int OpponentRow { set; get; }
