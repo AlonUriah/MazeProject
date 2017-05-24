@@ -8,11 +8,11 @@
         mc:Ignorable="d"
         Title="Multi-Player Menu" Height="300" Width="300" WindowStartupLocation="CenterScreen" Closed="wdw_multimenu_Close">
     <StackPanel HorizontalAlignment="Center" Height="271" VerticalAlignment="Center" Width="290" Margin="0,0,0,0" IsManipulationEnabled="True">
-        <controls:GameList Margin="0,10,0,0">
+        <controls:GameList  x:Name="games_list" Margin="0,10,0,0"/>
 
-        </controls:GameList>
-        <controls:GameProperties>
 
-        </controls:GameProperties>
+        <controls:GameProperties x:Name="games_properties"/>
+
+
     </StackPanel>
 </Window>

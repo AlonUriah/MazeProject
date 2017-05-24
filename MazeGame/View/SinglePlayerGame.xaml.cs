@@ -22,7 +22,6 @@ namespace MazeGame.View
     {
         private ISinglePlayerViewModel vm;
         private Window parent;
-        public string lastKeyPressed { get; private set; }
 
         public SinglePlayerGame(ISinglePlayerViewModel vm, Window parent)
         {
@@ -32,31 +31,28 @@ namespace MazeGame.View
             this.player.DataContext = this.vm;
             if (this.player.Name == "player")
                 this.KeyDown += this.GameSurface_KeyDown;
-            this.lastKeyPressed = "";
         }
 
         private void GameSurface_KeyDown(object sender, KeyEventArgs e)
         {
-            string key = "";
             switch (e.Key)
             {
                 case Key.Up:
-                    key = "up";
+                    this.player.Key = "up";
                     break;
                 case Key.Down:
-                    key = "down";
+                    this.player.Key = "down";
                     break;
                 case Key.Right:
-                    key = "right";
+                    this.player.Key = "right";
                     break;
                 case Key.Left:
-                    key = "left";
+                    this.player.Key = "left";
                     break;
                 default:
                     break;
             }
-            this.vm.PlayerMoved(this.Name, key);
-            this.lastKeyPressed = key;
+            this.vm.PlayerMoved(this.Name, this.player.Key);
         }
 
         private void btn_restart_Click(object sender, RoutedEventArgs e)

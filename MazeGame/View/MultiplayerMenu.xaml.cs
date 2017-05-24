@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MazeGame.ViewModel;
+using MazeGame.ViewModel.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,18 +22,14 @@ namespace MazeGame.View
     public partial class MultiplayerMenu : Window
     {
         private Window parent;
-
-        // private IViewModel vm;
-
-        public string GameName { get; set; } = "Maor";
-        public int Rows { get; set; } = 0;
-        public int Cols { get; set; } = 0;
+        private IMultiplayerSettingsViewModel multi_vm;
 
         public MultiplayerMenu(Window parent)
         {
             InitializeComponent();
             this.parent = parent;
-            this.DataContext = this;
+            this.multi_vm = new MultiplayerSettingsViewModel();
+            this.games_list.DataContext = this.multi_vm;
         }
 
         private void wdw_multimenu_Close(object sender, EventArgs e)

@@ -25,6 +25,7 @@ namespace MazeGame.View.ValueConverters
                 int cell_row = (int)(values[3]);
                 int cell_col = (int)(values[4]);
 
+
                 bool player_is_here = player_row == cell_row && player_col == cell_col;
 
                 switch (fill)
