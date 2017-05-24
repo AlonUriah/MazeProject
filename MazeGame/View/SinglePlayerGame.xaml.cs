@@ -68,12 +68,15 @@ namespace MazeGame.View
 
         private void btn_quit_Click(object sender, RoutedEventArgs e)
         {
-            this.vm.Close();
+            if (this.btn_solve.IsEnabled)
+                this.vm.Close();
+            this.Close();
         }
 
         private void wdw_single_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.vm.Close();
+            if (this.btn_solve.IsEnabled)
+                this.vm.Close();
         }
         // Awaiting for maze behavior
 
