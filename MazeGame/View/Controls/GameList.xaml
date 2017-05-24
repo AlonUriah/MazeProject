@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid HorizontalAlignment="Center">
         <Label Grid.Row="0" Grid.Column="0" Content="List of Games:" FontSize="15" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="100" />
-        <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="120"/>
+        <ComboBox ItemsSource="{Binding GamesList}" SelectedValue="{Binding SelectedGame, Mode=OneWayToSource}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="120"/>
 
         <Button x:Name="btn_join" Style="{StaticResource BaseButtonStyle}" Grid.Row="1" Grid.Column="0" Content="Join Game" Margin="4,10,6,10"/>
         <Button x:Name="btn_refresh" Style="{StaticResource BaseButtonStyle}" Content="Refresh" Grid.Column="1" HorizontalAlignment="Left" Margin="27,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Height="30"/>

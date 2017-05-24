@@ -23,6 +23,7 @@ namespace MazeGame.View.Controls
     /// </summary>
     public partial class GameSurface : UserControl
     {
+        public string Key { get; set; } = string.Empty;
         public GameSurface()
         {
             InitializeComponent();
