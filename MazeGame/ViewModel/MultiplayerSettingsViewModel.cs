@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using MazeGame.Model.Interfaces;
 using MazeGame.ViewModel.Interfaces;
 using MazeGame.Model;
+using MazeGame.Model.ClientServerModel;
+using System.Collections.ObjectModel;
 
 namespace MazeGame.ViewModel
 {
@@ -17,14 +19,14 @@ namespace MazeGame.ViewModel
 
         private readonly IMultiplayerSettingsModel _model;
 
-        public MultiplayerSettingsViewModel(IMultiplayerSettingsModel model)
+        public MultiplayerSettingsViewModel()
         {
-            _model = model;
+            _model = ModelFactory.Instace.GetMultiPlayerSettingsModel();
             _model.OnGamesListReceived += UpdateGamesList;
             ConnectionStatus = _model.GetList();
         }
         
-        public string[] GamesList
+        public ObservableCollection<string> GamesList
         {
             set
             {
@@ -49,14 +51,13 @@ namespace MazeGame.ViewModel
             set
             {
                 _mazeRowsStr = value;
+                MazeRows = 0;
                 int mazeRows;
                 if(int.TryParse(_mazeRowsStr,out mazeRows))
                 {
                     MazeRows = mazeRows;
                     return;
                 }
-
-                //Alert
             }
         }
         public string MazeColsStr
@@ -68,14 +69,13 @@ namespace MazeGame.ViewModel
             set
             {
                 _mazeColsStr = value;
+                MazeCols = 0;
                 int mazeCols;
                 if (int.TryParse(_mazeColsStr, out mazeCols))
                 {
                     MazeCols = mazeCols;
                     return;
                 }
-
-                //Alert
             }
         }
 
@@ -101,6 +101,7 @@ namespace MazeGame.ViewModel
             {
                 gamesList[index] = token.Value<string>();
             }
+            GamesList = gamesList;
             ConnectionStatus = 1;
         }
         

@@ -1,4 +1,6 @@
-﻿namespace MazeGame.ViewModel.Interfaces
+﻿using System.Collections.ObjectModel;
+
+namespace MazeGame.ViewModel.Interfaces
 {
     public interface IMultiplayerSettingsViewModel
     {
@@ -7,7 +9,7 @@
         string MazeName { set; get; }
         string MazeRowsStr { set; get; }
         string MazeColsStr { set; get; }
-        string[] GamesList { set; get; }
+        ObservableCollection<string> GamesList { get; }
 
         int MazeRows { get; }
         int MazeCols { get; }

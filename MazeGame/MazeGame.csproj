@@ -130,7 +130,6 @@
     <Compile Include="Model\ClientServerModel\ClientServerMultiplayerModel.cs" />
     <Compile Include="Model\ClientServerModel\ClientServerSingleplayerModel.cs" />
     <Compile Include="Model\ClientServerModel\MultiplayerSettingModel.cs" />
-    <Compile Include="Model\IMazeModel.cs" />
     <Compile Include="Model\Interfaces\IGameModel.cs" />
     <Compile Include="Model\Interfaces\IMultiplayerModel.cs" />
     <Compile Include="Model\Interfaces\IMultiplayerSettingsModel.cs" />

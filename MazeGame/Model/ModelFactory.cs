@@ -44,6 +44,10 @@ namespace MazeGame.Model
         {
             return new ClientServerMultiplayerModel(_client);
         }
+        public IMultiplayerSettingsModel GetMultiPlayerSettingsModel()
+        {
+            return new MultiplayerSettingModel(_client);
+        }
 
     }
 }
