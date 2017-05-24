@@ -9,7 +9,7 @@ namespace MazeGame.Model.Interfaces
         event GamesListReceivedHandler OnGamesListReceived;
         event GameReceivedHandler OnGameReceived;
 
-        bool TryGetList();
+        int GetList();
         void StartGame(string name, int cols, int rows);
         void JoinGame(string gameName);
     }

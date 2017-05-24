@@ -40,9 +40,9 @@ namespace MazeGame.Model
         {
             return new ClientServerSingleplayerModel(_client);
         }
-        public IMultiplayerModel GetMultiPlayerModel(string gameName, int mazeRows, int mazeCols)
+        public IMultiplayerModel GetMultiPlayerModel()
         {
-            return new ClientServerMultiplayerModel(_client, gameName, mazeRows, mazeCols);
+            return new ClientServerMultiplayerModel(_client);
         }
 
     }
