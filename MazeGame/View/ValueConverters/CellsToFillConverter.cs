@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -32,7 +33,10 @@ namespace MazeGame.View.ValueConverters
                         return new SolidColorBrush(Colors.Black);
                     case '0':
                         if (player_is_here)
+                        {
                             return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/player.png")));
+                            
+                        }
                         return new SolidColorBrush(Colors.White);
                     case '*':
                         if (player_is_here)
