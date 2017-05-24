@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System;
 using System.Threading;
+using System.ComponentModel;
 
 namespace MazeGame.Model.ClientServerModel
 {
@@ -34,46 +35,12 @@ namespace MazeGame.Model.ClientServerModel
         public ClientServerSingleplayerModel(Client client) : base (client)
         {
         }
-
-        public ClientServerSingleplayerModel(Client client, string gameName, int mazeRows, int mazeCols) : base(client)
-        {
-            OnGameReceived += UpdateMaze;
-            CreateNewGame(gameName, mazeRows, mazeCols);
-        }
-
-        public ClientServerSingleplayerModel(string gameName, int mazeRows, int mazeCols) : base()
-        {
-            OnGameReceived += UpdateMaze;
-            CreateNewGame(gameName, mazeRows, mazeCols);
-        }
-
+        
         public int CreateNewGame(string gameName, int mazeRows, int mazeCols)
         {
             IsLoading = true;
             var query = string.Format(CREATE_NEW_GAME_COMMAND, gameName, mazeRows, mazeCols);
             return _client.Broadcast(query);
-        }
-        protected virtual void UpdateMaze(object sender, string gameJason)
-        {
-            try
-            {
-                var gameObj = JObject.Parse(gameJason);
-                PlayerMaze = gameObj.ToMazeWrapper();
-                PlayerRow = PlayerMaze.StartRow;
-                PlayerColumn = PlayerMaze.StartCol;
-
-                if (OnGameReceived != null)
-                {
-                    OnGameReceived.Invoke(this, gameJason);
-                }
-
-                IsLoading = false;
-            }
-            catch (JsonReaderException e)
-            {
-                //Alert
-                IsLoading = true;
-            }
         }
 
         public virtual void Move(string direction)
@@ -86,10 +53,10 @@ namespace MazeGame.Model.ClientServerModel
             switch (direction.ToLower())
             {
                 case "up":
-                    PlayerRow++;
+                    PlayerRow--;
                     break;
                 case "down":
-                    PlayerRow--;
+                    PlayerRow++;
                     break;
                 case "left":
                     PlayerColumn--;
@@ -160,15 +127,46 @@ namespace MazeGame.Model.ClientServerModel
 
         public override void ResponseReceived(string response)
         {
-            if(response == "generated game")
+            JObject jObject;
+            try
             {
-                //game jason
-                UpdateMaze(this, response);
+                jObject = JObject.Parse(response);
             }
-            else if (response.Contains("Solution"))
+            catch (JsonReaderException)
             {
-                //solution jason
-                SimulateSolution(response);
+                return;
+            }
+
+            if (jObject["Solution"] == null)
+            {
+                OnGameReceived?.Invoke(this, response);
+                return;
+            }
+
+            OnSolutionReceived?.Invoke(this, jObject["Solution"].ToString());
+        }
+
+        [Obsolete]
+        protected virtual void UpdateMaze(object sender, string gameJason)
+        {
+            try
+            {
+                var gameObj = JObject.Parse(gameJason);
+                PlayerMaze = gameObj.ToMazeWrapper();
+                PlayerRow = PlayerMaze.StartRow;
+                PlayerColumn = PlayerMaze.StartCol;
+
+                /*if (OnGameReceived != null)
+                {
+                    OnGameReceived.Invoke(this, gameJason);
+                }*/
+
+                IsLoading = false;
+            }
+            catch (JsonReaderException e)
+            {
+                //Alert
+                IsLoading = true;
             }
         }
     }

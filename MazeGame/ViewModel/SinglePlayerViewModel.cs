@@ -1,33 +1,95 @@
 ﻿using System.Threading;
-using System.Configuration;
+using System.ComponentModel;
 using MazeGame.Model.Interfaces;
 using MazeLib;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using MazeGame.Common;
 using System;
+using MazeGame.ViewModel.Interfaces;
 
 namespace MazeGame.ViewModel
 {
-    class SinglePlayerViewModel : SinglePlayerViewModelBase, IDisposable
+    public delegate void PlayerMovedHandler(object sender, string direction);
+
+    class SinglePlayerViewModel : ISinglePlayerViewModel, IDisposable, INotifyPropertyChanged
     {
-        const char LEFT_CHAR = '3';
-        const char RIGHT_CHAR = '2';
-        const char UP_CHAR = '1';
-        const char DOWN_CHAR = '0';
+        #region Movement Constants
+        const char LEFT_CHAR = '0';
+        const char RIGHT_CHAR = '1';
+        const char UP_CHAR = '3';
+        const char DOWN_CHAR = '2';
+        #endregion
+
+        #region Board Constants
         const char FREE_CELL_CHAR = '0';
+        const char START_CELL_CHAR = '*';
+        const char END_CELL_CHAR = '#';
+        const char WALL_CELL_CHAR = '1';
+        #endregion
+
+        #region Communication Codes
         const int ERROR_CODE = 0;
         const int SUCCESS_CODE = 1;
         const int LOADING_CODE = 2;
+        #endregion 
 
         private ISingleplayerModel _model;
         private MazeWrapper _maze;
+        private int _playerColumn;
+        private int _playerRow;
         private bool isSolved = false;
-        
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public event SolutionReceivedHandler OnSolutionReceived;
+        public event GenerateGameHandler OnGameReceived;
+        public event PlayerMovedHandler OnPlayerMoved;
+
+        public MazeWrapper PlayerMaze
+        {
+            get
+            {
+                return _maze;
+            }
+            set
+            {
+                _maze = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("PlayerMaze"));
+            }
+        }
+        public int PlayerColumn
+        {
+            get
+            {
+                return _playerColumn;
+            }
+            set
+            {
+                _playerColumn = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PlayerColumn"));
+            }
+        }
+        public int PlayerRow
+        {
+            get
+            {
+                return _playerRow;
+            }
+
+            set
+            {
+                _playerRow = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PlayerRow"));
+            }
+        }
+        public int Status { protected set; get; }
+        public bool DidWin { protected set; get; } = false;
+
         public SinglePlayerViewModel(ISingleplayerModel model, string name, int rows, int cols)
         {
             _model = model;
             _model.OnGameReceived += UpdateMaze;
+            _model.OnSolutionReceived += AnimateSolution;
             Status = _model.CreateNewGame(name, rows, cols);
         }
 
@@ -45,22 +107,11 @@ namespace MazeGame.ViewModel
             }
 
             _maze = gameJason.ToMazeWrapper();
+            PlayerRow = _maze.StartRow;
+            PlayerColumn = _maze.StartCol;
             Status = (_maze != null) ? SUCCESS_CODE : ERROR_CODE;
         }
 
-        public override MazeWrapper PlayerMaze
-        {
-            get
-            {
-                return _maze;
-            }
-
-            set
-            {
-                _maze = value;
-            }
-        }
- 
         private bool IsValidMove(string direction, out Position position)
         {
             int row = PlayerRow;
@@ -69,10 +120,10 @@ namespace MazeGame.ViewModel
             switch (direction.ToLower())
             {
                 case "up":
-                    row++;
+                    row--;
                     break;
                 case "down":
-                    row--;
+                    row++;
                     break;
                 case "left":
                     column--;
@@ -83,7 +134,17 @@ namespace MazeGame.ViewModel
             }
 
             position = new Position(row, column);
-            return (_maze[row, column] == FREE_CELL_CHAR);
+            if (row < 0 || column < 0 || row > _maze.Rows - 1 || column > _maze.Cols - 1)
+            {
+                return false;
+            }
+
+            return (_maze[row, column] != WALL_CELL_CHAR);
+        }
+        public virtual void PlayerMoved(object sender, string direction)
+        {
+            if (OnPlayerMoved != null)
+                OnPlayerMoved.Invoke(sender, direction);
         }
         public void SinglePlayerMoved(object sender, string direction)
         {
@@ -98,10 +159,9 @@ namespace MazeGame.ViewModel
                 DidWin = true;
             }
         }
-        public override void Solve()
+        public void Solve()
         {
             int algorithm = Properties.Settings.Default.Algorithm;            
-            _model.OnSolutionReceived += AnimateSolution;
             _model.SolveMaze(_maze.Name,algorithm);
         }
         private void AnimateSolution(object sender, string solution)
@@ -117,26 +177,26 @@ namespace MazeGame.ViewModel
                         PlayerColumn++;
                         break;
                     case UP_CHAR:
-                        PlayerRow++;
-                        break;
-                    case DOWN_CHAR:
                         PlayerRow--;
                         break;
+                    case DOWN_CHAR:
+                        PlayerRow++;
+                        break;
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
             }
             isSolved = true;
         }
-        public override void Restart()
+        public void Restart()
         {
             PlayerRow = _maze.StartRow;
             PlayerColumn = _maze.StartCol;
         }
-        public override char GetValueAtPos(Position pos)
+        public char GetValueAtPos(Position pos)
         {
             return _maze[pos.Row, pos.Col];
         }
-        public override void Close()
+        public void Close()
         {
             if (!isSolved)
             {

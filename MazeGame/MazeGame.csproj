@@ -145,7 +145,6 @@
     <Compile Include="ViewModel\MultiplayerViewModelBase.cs" />
     <Compile Include="ViewModel\SinglePlayerSettingsViewModel.cs" />
     <Compile Include="ViewModel\SinglePlayerViewModel.cs" />
-    <Compile Include="ViewModel\SinglePlayerViewModelBase.cs" />
     <Compile Include="View\Controls\GameList.xaml.cs">
       <DependentUpon>GameList.xaml</DependentUpon>
     </Compile>

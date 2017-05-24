@@ -129,18 +129,20 @@ namespace MazeGame.Model.ClientServerModel
                     try
                     {
                         // Read a buffer from the stream
-                        string response = _streamReader.ReadLine();
+                        string response = _streamReader.ReadToEnd();
 
                         // If it is null, raise an exception.
-                        if (response == null)
+                        if (response == null || string.IsNullOrWhiteSpace(response))
                         {
-                            //throw new Exception("Note: Connection shut down.");
                             _connected = false;
-                         //   continue;
+                            continue;
                         }
 
                         // Otherwise, write the data to the console.
-                        OnResponseReceived?.Invoke(response);
+                        if (!string.IsNullOrWhiteSpace(response))
+                        {
+                            OnResponseReceived?.Invoke(response);
+                        }
                     }
                     catch (Exception)
                     {
@@ -186,7 +188,7 @@ namespace MazeGame.Model.ClientServerModel
                  * we write the command to the server.
                  */
                 _streamWriter.WriteLine(query);
-                _streamWriter.Flush();
+                _streamWriter.Flush();   
                 return LOADING_CODE;
             }
             catch (Exception)

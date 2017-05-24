@@ -32,7 +32,7 @@ namespace MazeGame.Model
                     }
                 }
 
-                return Instace;
+                return _instance;
             }
         }
 
