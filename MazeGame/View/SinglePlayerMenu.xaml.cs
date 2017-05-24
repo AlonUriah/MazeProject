@@ -34,11 +34,14 @@ namespace MazeGame.View
 
         private void btn_startgame_Click(object sender, RoutedEventArgs e)
         {
-            ISinglePlayerViewModel vm = this.single_vm.StartGame();
-
             this.single_vm.MazeName = this.game_properties.txt_gamename.Text;
             this.single_vm.MazeRowsStr = this.game_properties.txt_rows.Text;
             this.single_vm.MazeColsStr = this.game_properties.txt_cols.Text;
+
+
+            ISinglePlayerViewModel vm = this.single_vm.StartGame();
+
+
 
             if (vm == null)
             {
