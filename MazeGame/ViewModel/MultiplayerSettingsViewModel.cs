@@ -1,25 +1,44 @@
-﻿using MazeGame.Model.Interfaces;
+﻿using System.ComponentModel;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using MazeGame.Model.Interfaces;
 using MazeGame.ViewModel.Interfaces;
+using MazeGame.Model;
 
 namespace MazeGame.ViewModel
 {
-    public class MultiplayerSettingsViewModel : IMultiplayerSettingsViewModel
+    public class MultiplayerSettingsViewModel : IMultiplayerSettingsViewModel, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private string _mazeRowsStr;
         private string _mazeColsStr;
+        private string[] _gamesList;
+
         private readonly IMultiplayerSettingsModel _model;
 
         public MultiplayerSettingsViewModel(IMultiplayerSettingsModel model)
         {
             _model = model;
             _model.OnGamesListReceived += UpdateGamesList;
-            
+            ConnectionStatus = _model.GetList();
         }
-
-
+        
+        public string[] GamesList
+        {
+            set
+            {
+                _gamesList = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("GamesList"));
+            }
+            get
+            {
+                return _gamesList;
+            }
+        }
         public int ConnectionStatus { private set; get; }
         public string SelectedGame { set; get; }
-        public string[] GamesList { set; get; }
+
         public string MazeName { set; get; }
         public string MazeRowsStr
         {
@@ -63,25 +82,46 @@ namespace MazeGame.ViewModel
         public int MazeRows { private set; get; }
         public int MazeCols { private set; get; }
 
-        public void JoinGame()
+        private void UpdateGamesList(string gamesJArray)
         {
-            _model.JoinGame(SelectedGame);
-        }
-        public void StartGame()
-        {
-            if(MazeRows == 0 || MazeCols == 0 || string.IsNullOrWhiteSpace(MazeName))
+            JArray jArray;
+
+            try
             {
-                //Alert
+                jArray = JArray.Parse(gamesJArray);
+            }
+            catch (JsonReaderException)
+            {
                 return;
             }
 
-            _model.StartGame(MazeName, MazeRows, MazeCols);
+            int index = 0;
+            string[] gamesList = new string[jArray.Count];
+            foreach (var token in jArray)
+            {
+                gamesList[index] = token.Value<string>();
+            }
+            ConnectionStatus = 1;
         }
-
-        private void UpdateGamesList(string gamesList)
+        
+        private bool IsValidInput()
         {
-            string[] spl = gamesList.Split(',');
-            GamesList = spl;
+            if (MazeRows <= 0 || MazeCols <= 0 || string.IsNullOrWhiteSpace(MazeName))
+                return false;
+
+            return true;
+        }
+        public IMultiPlayerViewModel JoinGame()
+        {
+            IMultiplayerModel model = ModelFactory.Instace.GetMultiPlayerModel();
+            return new MultiplayerViewModel(model, SelectedGame);
+        }
+        public IMultiPlayerViewModel StartGame()
+        {
+            if (!IsValidInput()) return null; 
+
+            IMultiplayerModel model = ModelFactory.Instace.GetMultiPlayerModel();
+            return new MultiplayerViewModel(model, MazeName, MazeRows, MazeCols);
         }
     }
 }

@@ -12,7 +12,7 @@
         int MazeRows { get; }
         int MazeCols { get; }
 
-        void JoinGame();
-        void StartGame();
+        IMultiPlayerViewModel JoinGame();
+        IMultiPlayerViewModel StartGame();
     }
 }

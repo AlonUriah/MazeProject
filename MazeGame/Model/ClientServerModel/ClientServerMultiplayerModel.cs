@@ -19,6 +19,10 @@ namespace MazeGame.Model.ClientServerModel
         public int RivalRow { set; get; }
         public int RivalColumn { set; get; }
 
+        public ClientServerMultiplayerModel(Client client)
+        {
+
+        }
         public ClientServerMultiplayerModel(Client client, string gameName, int mazeRows, int mazeCols) : base(client) { }
         public ClientServerMultiplayerModel(string gameName, int mazeRows, int mazeCols) : base() { }
 

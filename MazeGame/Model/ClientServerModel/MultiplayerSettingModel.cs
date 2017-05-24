@@ -15,13 +15,26 @@ namespace MazeGame.Model.ClientServerModel
         #endregion
 
         public event GameReceivedHandler OnGameReceived;
-        public event Interfaces.GamesListReceivedHandler OnGamesListReceived;
+        public event GamesListReceivedHandler OnGamesListReceived;
 
         public MultiplayerSettingModel(Client client) : base(client) { }
 
-        public bool TryGetList()
+        event Interfaces.GamesListReceivedHandler IMultiplayerSettingsModel.OnGamesListReceived
         {
-            return (_client.Broadcast(LIST_COMMAND) == 1);
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int GetList()
+        {
+            return _client.Broadcast(LIST_COMMAND);
         }
         public void JoinGame(string gameName)
         {
@@ -38,21 +51,10 @@ namespace MazeGame.Model.ClientServerModel
 
         public override void ResponseReceived(string response)
         {
-            JObject jObject;
-            try
+            if(OnGamesListReceived != null)
             {
-                jObject = JObject.Parse(response);
-            }
-            catch (JsonReaderException e)
-            {
-                // Warn
-                return;
-            }
-
-            if(OnGameReceived != null)
-            {
-                OnGameReceived.Invoke(jObject.ToMazeWrapper());
-            }
+                //OnGamesListReceived.Invoke(response);
+            }       
         }
     }
 }

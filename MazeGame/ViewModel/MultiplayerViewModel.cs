@@ -23,10 +23,16 @@ namespace MazeGame.ViewModel
             }
         }
 
-        public MultiplayerViewModel(IMultiplayerModel model)
+        public MultiplayerViewModel(IMultiplayerModel model, string gameName)
         {
             _model = model;
             _model.OnOpponentMoved += OpponentMoved;
+        }
+
+        public MultiplayerViewModel(IMultiplayerModel model, string gameName, int mazeCols, int mazeRows)
+        {
+            _model = model;
+
         }
 
         private void OpponentMoved(object sender, string direction)
