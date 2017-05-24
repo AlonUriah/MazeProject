@@ -14,6 +14,8 @@ namespace MazeGame.ViewModel.Interfaces
         int MazeRows { get; }
         int MazeCols { get; }
 
+        void RefreshGamesList();
+
         IMultiPlayerViewModel JoinGame();
         IMultiPlayerViewModel StartGame();
     }
