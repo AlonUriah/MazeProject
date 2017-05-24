@@ -30,11 +30,17 @@ namespace MazeGame.View
             this.parent = parent;
             this.multi_vm = new MultiplayerSettingsViewModel();
             this.games_list.DataContext = this.multi_vm;
+            this.games_list.btn_refresh.Click += this.btn_refresh_Click;
         }
 
         private void wdw_multimenu_Close(object sender, EventArgs e)
         {
             this.parent.Show();
+        }
+
+        private void btn_refresh_Click(object sender, RoutedEventArgs e)
+        {
+            this.multi_vm.RefreshGamesList();
         }
     }
 }

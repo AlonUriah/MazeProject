@@ -25,6 +25,7 @@ namespace MazeGame.View.Controls
             InitializeComponent();
         }
 
+
         // Connect to the server
         // Bind the list to the list of games
         // Refresh logic buttons
