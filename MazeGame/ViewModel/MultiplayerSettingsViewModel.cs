@@ -6,6 +6,7 @@ using MazeGame.ViewModel.Interfaces;
 using MazeGame.Model;
 using MazeGame.Model.ClientServerModel;
 using System.Collections.ObjectModel;
+using System;
 
 namespace MazeGame.ViewModel
 {
@@ -123,6 +124,11 @@ namespace MazeGame.ViewModel
 
             IMultiplayerModel model = ModelFactory.Instace.GetMultiPlayerModel();
             return new MultiplayerViewModel(model, MazeName, MazeRows, MazeCols);
+        }
+
+        public void RefreshGamesList()
+        {
+            _model.GetList();
         }
     }
 }
