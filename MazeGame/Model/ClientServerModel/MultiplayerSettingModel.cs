@@ -8,6 +8,7 @@ namespace MazeGame.Model.ClientServerModel
 
         public MultiplayerSettingModel(Client client) : base(client) { }
 
+        public string SelectedGame { set; get; }
         public event GamesListReceivedHandler OnGamesListReceived;
 
         public int GetList()

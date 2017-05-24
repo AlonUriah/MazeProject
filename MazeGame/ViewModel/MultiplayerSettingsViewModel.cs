@@ -15,7 +15,7 @@ namespace MazeGame.ViewModel
 
         private string _mazeRowsStr;
         private string _mazeColsStr;
-        private string[] _gamesList;
+        private ObservableCollection<string> _gamesList;
 
         private readonly IMultiplayerSettingsModel _model;
 
@@ -95,12 +95,12 @@ namespace MazeGame.ViewModel
                 return;
             }
 
-            int index = 0;
-            string[] gamesList = new string[jArray.Count];
+            var gamesList = new ObservableCollection<string>();
             foreach (var token in jArray)
             {
-                gamesList[index] = token.Value<string>();
+                gamesList.Add(token.Value<string>());
             }
+
             GamesList = gamesList;
             ConnectionStatus = 1;
         }
