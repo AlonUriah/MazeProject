@@ -16,6 +16,7 @@
         <ValueConverters:CellsToFillConverter x:Key="FillConverter"/>
         <ValueConverters:YToHeightConverter x:Key="YConverter"/>
         <ValueConverters:XToWidthConverter x:Key="XConverter"/>
+        <ValueConverters:NameToGameConverter x:Key="NameConverter"/>
         <ValueConverters:WidthToCellConverter x:Key="CellConverter"/>
     </UserControl.Resources>
 
@@ -57,6 +58,9 @@
                             <Binding ElementName="uc" Path="DataContext.PlayerColumn"/>
                             <Binding Path="Y"/>
                             <Binding Path="X"/>
+                            <Binding ElementName="uc" Path="DataContext.OpponentRow"/>
+                            <Binding ElementName="uc" Path="DataContext.OpponentColumn"/>
+                            <Binding ElementName="uc" Path="Player" Mode="OneWay"/>
                         </MultiBinding>
                     </Rectangle.Fill>
                     <Rectangle.Width>
