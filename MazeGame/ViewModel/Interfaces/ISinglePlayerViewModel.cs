@@ -1,5 +1,6 @@
 ﻿using MazeLib;
 using MazeGame.Common;
+using System;
 
 namespace MazeGame.ViewModel.Interfaces
 {
@@ -15,5 +16,6 @@ namespace MazeGame.ViewModel.Interfaces
         void Close();
         int Status { get; }
         bool DidWin { get; }
+        Action<object, int?> GameStatusChanged { get; set; }
     }
 }

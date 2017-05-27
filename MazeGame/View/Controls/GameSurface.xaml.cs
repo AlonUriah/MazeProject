@@ -24,6 +24,20 @@ namespace MazeGame.View.Controls
     public partial class GameSurface : UserControl
     {
         public string Key { get; set; } = string.Empty;
+
+       
+
+        public string Player
+        {
+            get { return (string)GetValue(PlayerProperty); }
+            set { SetValue(PlayerProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Player.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PlayerProperty =
+            DependencyProperty.Register("Player", typeof(string), typeof(GameSurface), new PropertyMetadata(null));
+
+
         public GameSurface()
         {
             InitializeComponent();

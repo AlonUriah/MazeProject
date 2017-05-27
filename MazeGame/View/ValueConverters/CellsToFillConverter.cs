@@ -14,6 +14,12 @@ namespace MazeGame.View.ValueConverters
 {
     public class CellsToFillConverter : IMultiValueConverter
     {
+        public static int prev_player_row = -1;
+        public static int prev_player_col = -1;
+
+        public static int prev_rival_row = -1;
+        public static int prev_rival_col = -1;
+
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             try
@@ -25,8 +31,20 @@ namespace MazeGame.View.ValueConverters
                 int cell_row = (int)(values[3]);
                 int cell_col = (int)(values[4]);
 
+                string player = (string)(values[7]);
 
-                bool player_is_here = player_row == cell_row && player_col == cell_col;
+                int opponent_row = -1;
+                int opponent_col = -1;
+                
+                bool player_is_here;
+                if (player == "player")
+                    player_is_here = player_row == cell_row && player_col == cell_col;
+                else
+                {
+                    opponent_row = (int)(values[5]);
+                    opponent_col = (int)(values[6]);
+                    player_is_here = opponent_row == cell_row && opponent_col == cell_col;
+                }
 
                 switch (fill)
                 {
@@ -35,17 +53,29 @@ namespace MazeGame.View.ValueConverters
                     case '0':
                         if (player_is_here)
                         {
-                            return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/player.png")));
-                            
+                            if (player == "player")
+                                return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/player.png")));
+                            else
+                                return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/rival.png")));
                         }
                         return new SolidColorBrush(Colors.White);
                     case '*':
                         if (player_is_here)
-                            return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/player.png")));
+                        {
+                            if (player == "player")
+                                return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/player.png")));
+                            else
+                                return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/rival.png")));
+                        }
                         return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/start.png")));
                     case '#':
                         if (player_is_here)
-                            return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/player.png")));
+                        {
+                            if (player == "player")
+                                return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/player.png")));
+                            else
+                                return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/rival.png")));
+                        }
                         return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MazeGame;component/View/Resources/end.png")));
                     default:
                         throw new Exception("No such symbol!");

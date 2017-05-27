@@ -30,12 +30,63 @@ namespace MazeGame.View
             this.parent = parent;
             this.multi_vm = new MultiplayerSettingsViewModel();
             this.games_list.DataContext = this.multi_vm;
+            this.game_properties.DataContext = this.multi_vm;
             this.games_list.btn_refresh.Click += this.btn_refresh_Click;
+            this.games_list.btn_join.Click += this.btn_join_Click;
+            this.game_properties.btn_startgame.Click += this.btn_startgame_Click;
+        }
+
+        private void btn_join_Click(object sender, RoutedEventArgs e)
+        {
+            this.multi_vm.MazeName = this.game_properties.txt_gamename.Text;
+            this.multi_vm.MazeRowsStr = this.game_properties.txt_rows.Text;
+            this.multi_vm.MazeColsStr = this.game_properties.txt_cols.Text;
+
+
+            IMultiPlayerViewModel vm = this.multi_vm.JoinGame();
+
+            //while (vm.Status != 1) { }
+
+            if (vm == null)
+            {
+                MessageBox.Show("Invalid input!");
+                return;
+            }
+
+            Window next = new MultiPlayerGame(vm, this.parent);
+            next.Show();
+            this.parent = null;
+            this.Close();
+            
+        }
+
+        private void btn_startgame_Click(object sender, RoutedEventArgs e)
+        {
+            this.multi_vm.MazeName = this.game_properties.txt_gamename.Text;
+            this.multi_vm.MazeRowsStr = this.game_properties.txt_rows.Text;
+            this.multi_vm.MazeColsStr = this.game_properties.txt_cols.Text;
+
+
+            IMultiPlayerViewModel vm = this.multi_vm.StartGame();
+
+           // while (vm.Status != 1) { }
+
+            if (vm == null)
+            {
+                MessageBox.Show("Invalid input!");
+                return;
+            }
+
+            Window next = new MultiPlayerGame(vm, this.parent);
+            next.Show();
+            this.parent = null;
+            this.Close();
         }
 
         private void wdw_multimenu_Close(object sender, EventArgs e)
         {
-            this.parent.Show();
+            if (this.parent != null)
+                this.parent.Show();
         }
 
         private void btn_refresh_Click(object sender, RoutedEventArgs e)
