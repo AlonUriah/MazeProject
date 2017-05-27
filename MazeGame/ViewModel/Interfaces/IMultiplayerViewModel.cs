@@ -12,6 +12,6 @@ namespace MazeGame.ViewModel.Interfaces
         int OpponentColumn { set; get; }
         char GetValueAtPos(Position pos);
         string[] List { get; }
-        void Close(int code);
+        void Close();
     }
 }

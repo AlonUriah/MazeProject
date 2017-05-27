@@ -38,6 +38,7 @@ namespace MazeGame.ViewModel
         private MazeWrapper _maze;
         private int _playerColumn;
         private int _playerRow;
+        private bool _didWin = false;
         private bool isSolved = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -83,7 +84,17 @@ namespace MazeGame.ViewModel
             }
         }
         public int Status { protected set; get; }
-        public bool DidWin { protected set; get; } = false;
+        public bool DidWin
+        {
+            set
+            {
+                _didWin = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("DidWin"));
+            }get
+            {
+                return _didWin;
+            }
+        }
 
         public SinglePlayerViewModel(ISingleplayerModel model, string name, int rows, int cols)
         {
@@ -154,7 +165,7 @@ namespace MazeGame.ViewModel
             PlayerColumn = position.Col;
             PlayerRow = position.Row;
 
-            if(PlayerColumn == _maze.Cols && PlayerRow == _maze.Rows)
+            if(PlayerColumn == _maze.EndCol && PlayerRow == _maze.EndRow)
             {
                 DidWin = true;
             }
