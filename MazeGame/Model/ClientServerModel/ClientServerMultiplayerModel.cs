@@ -60,6 +60,7 @@ namespace MazeGame.Model.ClientServerModel
             {
                 JToken token = responseJason.Property("Direction").Value;
                 UpdateRivalLocation(token.Value<string>());
+                OnOpponentMoved?.Invoke(this, token.Value<string>());
                 return;
             }
 
