@@ -95,12 +95,14 @@ namespace MazeGame.View
             if (this.btn_solve.IsEnabled)
                 this.vm.Close();
             this.Close();
+            this.parent.Show();
         }
 
         private void wdw_single_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (this.btn_solve.IsEnabled)
                 this.vm.Close();
+            this.parent.Show();
         }
         // Awaiting for maze behavior
 
