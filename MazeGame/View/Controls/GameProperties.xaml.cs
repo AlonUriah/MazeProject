@@ -24,7 +24,8 @@ namespace MazeGame.View.Controls
         public GameProperties()
         {
             InitializeComponent();
-            this.DataContext = Properties.Settings.Default;
+            this.txt_cols.Text = Properties.Settings.Default["Cols"].ToString();
+            this.txt_rows.Text = Properties.Settings.Default["Rows"].ToString();
         }
     }
 }
