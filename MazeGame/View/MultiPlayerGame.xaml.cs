@@ -30,7 +30,7 @@ namespace MazeGame.View
             this.parent = parent;
             this.DataContext = this.vm;
             this.KeyDown += this.GameSurface_KeyDown;
-            //this.vm.O += this.OnStatusChanged;
+            this.vm.OnGameStatusChanged += this.OnStatusChanged;
         }
         private void GameSurface_KeyDown(object sender, KeyEventArgs e)
         {
