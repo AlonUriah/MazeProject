@@ -20,9 +20,9 @@ namespace MazeGame.ViewModel
         const char WALL_CELL_CHAR = '1';
         #endregion
 
-        const int PLAYER_WON = 1;
-        const int OPPONENT_WON = 2;
-        const int OPPONENT_QUIT = 3;
+        const int PLAYER_WON = 0;
+        const int OPPONENT_WON = 1;
+        const int OPPONENT_QUIT = 2;
 
         private const int PLAYER_ID = 1;
         private const int OPPONENT_ID = 2;
@@ -34,12 +34,10 @@ namespace MazeGame.ViewModel
         private int _opponentRow;
         private int _opponentColumn;
         private int _status;
-        private int? _winnderId;
-        private bool _didWin;
+
 
         public event GameStatusChangedHandler OnGameStatusChanged;
         public event PropertyChangedEventHandler PropertyChanged;
-        public event EventHandler OnGameReady;
 
         public int PlayerRow
         {
@@ -193,6 +191,8 @@ namespace MazeGame.ViewModel
                 if(DidWin(OpponentRow, OpponentColumn))
                 {
                     OnGameStatusChanged?.Invoke(this, OPPONENT_WON);
+                    _model.OnPlayerMoved -= PlayerMoved;
+                    _model.OnOpponentMoved -= OpponentMoved;
                 }
             }            
         }
@@ -208,6 +208,8 @@ namespace MazeGame.ViewModel
                 if (DidWin(PlayerRow, PlayerColumn))
                 {
                     OnGameStatusChanged?.Invoke(this, PLAYER_WON);
+                    _model.OnPlayerMoved -= PlayerMoved;
+                    _model.OnOpponentMoved -= OpponentMoved;
                 }
             }
         }

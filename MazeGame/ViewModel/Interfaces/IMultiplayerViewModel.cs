@@ -16,6 +16,5 @@ namespace MazeGame.ViewModel.Interfaces
         char GetValueAtPos(Position pos);
         void Close();
         int Status { get; }
-        event EventHandler OnGameReady;
     }
 }

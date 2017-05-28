@@ -32,6 +32,9 @@ namespace MazeGame.ViewModel
         const int ERROR_CODE = 0;
         const int SUCCESS_CODE = 1;
         const int LOADING_CODE = 2;
+        const int USER_WON = 0;
+        const int OPPONENT_WON = 1;
+        const int COMMUNICATION_LOSS = 2;
         #endregion 
 
         private ISingleplayerModel _model;
@@ -168,7 +171,8 @@ namespace MazeGame.ViewModel
 
             if(PlayerColumn == _maze.EndCol && PlayerRow == _maze.EndRow)
             {
-                DidWin = true;
+                OnGameStatusChanged?.Invoke(this, USER_WON);
+                OnPlayerMoved -= SinglePlayerMoved;
             }
         }
         public void Solve()

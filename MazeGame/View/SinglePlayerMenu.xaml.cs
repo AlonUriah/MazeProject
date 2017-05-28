@@ -41,8 +41,6 @@ namespace MazeGame.View
 
             ISinglePlayerViewModel vm = this.single_vm.StartGame();
 
-            while (vm.Status != 1) { }
-
             if (vm == null)
             {
                 MessageBox.Show("Invalid input!");
