@@ -27,14 +27,8 @@ namespace MazeGame.Model.ClientServerModel
         protected int PlayerColumn { set; get; }
         protected int PlayerWonId = -1;
 
-        public ClientServerSingleplayerModel() : base ()
-        {
-            OnGameReceived += GameReceived;
-        }
-        public ClientServerSingleplayerModel(Client client) : base (client)
-        {
-            OnGameReceived += GameReceived;
-        }
+        public ClientServerSingleplayerModel() : base() { }
+        public ClientServerSingleplayerModel(Client client) : base(client) { }
         
         public int CreateNewGame(string gameName, int mazeRows, int mazeCols)
         {
@@ -144,28 +138,6 @@ namespace MazeGame.Model.ClientServerModel
             }
 
             OnSolutionReceived?.Invoke(this, jObject["Solution"].ToString());
-        }
-        public virtual void GameReceived(object sender, string gameJason)
-        {
-            //try
-            //{
-            //    var gameObj = JObject.Parse(gameJason);
-            //    PlayerMaze = gameObj.ToMazeWrapper();
-            //    PlayerRow = PlayerMaze.StartRow;
-            //    PlayerColumn = PlayerMaze.StartCol;
-
-            //    /*if (OnGameReceived != null)
-            //    {
-            //        OnGameReceived.Invoke(this, gameJason);
-            //    }*/
-
-            //    IsLoading = false;
-            //}
-            //catch (JsonReaderException e)
-            //{
-            //    //Alert
-            //    IsLoading = true;
-            //}
         }
     }
 }

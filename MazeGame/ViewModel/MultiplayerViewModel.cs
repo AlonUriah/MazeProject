@@ -123,7 +123,7 @@ namespace MazeGame.ViewModel
             _model.JoinGame(gameName);
         }
 
-        public MultiplayerViewModel(IMultiplayerModel model, string gameName, int mazeCols, int mazeRows)
+        public MultiplayerViewModel(IMultiplayerModel model, string gameName, int mazeRows, int mazeCols)
         {
             _model = model;
             _model.OnPlayerMoved += PlayerMoved;

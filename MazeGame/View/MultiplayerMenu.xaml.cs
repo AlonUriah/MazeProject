@@ -68,8 +68,6 @@ namespace MazeGame.View
                 return;
             }
 
-            //while (vm.Status != 1) { }
-
             Window next = new MultiPlayerGame(vm, this.parent);
             next.Show();
             this.parent = null;

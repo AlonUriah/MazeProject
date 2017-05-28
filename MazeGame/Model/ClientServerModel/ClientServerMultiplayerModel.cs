@@ -104,11 +104,6 @@ namespace MazeGame.Model.ClientServerModel
                 default:
                     break;
             }
-
-            //if (DidWin(RivalRow, RivalRow, 2))
-            //{
-              
-            //}
         }
 
         public void JoinGame(string gameName)

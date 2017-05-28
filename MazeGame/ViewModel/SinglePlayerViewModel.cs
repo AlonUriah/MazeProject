@@ -121,7 +121,7 @@ namespace MazeGame.ViewModel
                 Status = ERROR_CODE;
             }
 
-            _maze = gameJason.ToMazeWrapper();
+            PlayerMaze = gameJason.ToMazeWrapper();
             PlayerRow = _maze.StartRow;
             PlayerColumn = _maze.StartCol;
             Status = (_maze != null) ? SUCCESS_CODE : ERROR_CODE;
@@ -182,6 +182,8 @@ namespace MazeGame.ViewModel
         }
         private void AnimateSolution(object sender, string solution)
         {
+            PlayerRow = PlayerMaze.StartRow;
+            PlayerColumn = PlayerMaze.StartCol;
             foreach(char dirChr in solution)
             {
                 switch (dirChr)
