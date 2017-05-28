@@ -141,7 +141,6 @@
     <Compile Include="ViewModel\Interfaces\ISinglePlayerViewModel.cs" />
     <Compile Include="ViewModel\MultiplayerSettingsViewModel.cs" />
     <Compile Include="ViewModel\MultiplayerViewModel.cs" />
-    <Compile Include="ViewModel\MultiplayerViewModelBase.cs" />
     <Compile Include="ViewModel\SinglePlayerSettingsViewModel.cs" />
     <Compile Include="ViewModel\SinglePlayerViewModel.cs" />
     <Compile Include="View\Controls\GameList.xaml.cs">
@@ -231,7 +230,9 @@
     <Resource Include="View\Resources\player.png" />
     <Resource Include="View\Resources\start.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\Resources\rival.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

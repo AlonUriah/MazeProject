@@ -1,11 +1,12 @@
 ﻿using MazeLib;
 using MazeGame.Common;
-using System;
 
 namespace MazeGame.ViewModel.Interfaces
 {
+    public delegate void GameStatusChangedHandler(object sender, int? code);
     public interface ISinglePlayerViewModel
     {
+        event GameStatusChangedHandler OnGameStatusChanged;
         MazeWrapper PlayerMaze { set; get; }
         void PlayerMoved(object sender, string direction);
         int PlayerRow { set; get; }
@@ -15,7 +16,6 @@ namespace MazeGame.ViewModel.Interfaces
         void Solve();
         void Close();
         int Status { get; }
-        bool DidWin { get; }
-        Action<object, int?> GameStatusChanged { get; set; }
+        bool DidWin { get; }        
     }
 }

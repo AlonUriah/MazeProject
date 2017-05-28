@@ -1,54 +1,58 @@
-﻿using Newtonsoft.Json;
+﻿using MazeGame.Common;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using MazeGame.Model.Interfaces;
+using MazeGame.Model.ClientServerModel;
 using System;
 
 namespace MazeGame.Model.ClientServerModel
 {
-    internal class ClientServerMultiplayerModel : ClientServerSingleplayerModel, IMultiplayerModel
+    internal class ClientServerMultiplayerModel : ClientServerModelBase, IMultiplayerModel
     {
         #region Constants
         private const string PLAY_COMMAND = @"play {0}";
+        private const string JOIN_COMMAND = @"join {0}";
+        private const string START_COMMAND = @"start {0} {1} {2}";
         const int PLAYER = 1;
         const int RIVAL = 0;
 
         public event OpponentMovedHandler OnOpponentMoved;
         public event JoinGameHandler OnJoinningGame;
+        public event PlayerMovedHandler OnPlayerMoved;
         #endregion
 
+        public event GenerateGameHandler OnGameReceived;
+
+        public MazeWrapper PlayerMaze;
         public int RivalRow { set; get; }
         public int RivalColumn { set; get; }
 
-        public ClientServerMultiplayerModel(Client client)
-        {
+        public ClientServerMultiplayerModel(Client client) : base(client) { }
 
-        }
-        public ClientServerMultiplayerModel(Client client, string gameName, int mazeRows, int mazeCols) : base(client) { }
-        public ClientServerMultiplayerModel(string gameName, int mazeRows, int mazeCols) : base() { }
-
-        public override void Move(string direction)
+        public void Move(string direction)
         {
-            base.Move(direction);
+            //base.Move(direction);
 
             var query = string.Format(PLAY_COMMAND, direction);
             _client.Broadcast(query);
 
-            if (DidWin(PlayerRow, PlayerColumn, 1))
-            {
+            //if (DidWin(PlayerRow, PlayerColumn, 1))
+            //{
            
-            }
+            //}
         }
 
         public override void ResponseReceived(string response)
         {
+            response = response.TrimJasonEnd();
             JObject responseJason;
+
             try
             {
                 responseJason = JObject.Parse(response);
             }
-            catch (JsonReaderException)
+            catch (JsonReaderException e)
             {
-                // Alert
                 return;
             }
 
@@ -59,12 +63,22 @@ namespace MazeGame.Model.ClientServerModel
                 return;
             }
 
-            UpdateMaze(this, response);
+            OnGameReceived?.Invoke(this, response);
         }
 
-        protected override void UpdateMaze(object sender, string gameJason)
+        public virtual void GameReceived(object sender, string gameJason)
         {
-            base.UpdateMaze(sender, gameJason);
+            JObject game;
+            try
+            {
+                game = JObject.Parse(gameJason);
+            }
+            catch (JsonReaderException)
+            {
+                return;
+            }
+
+            PlayerMaze = game.ToMazeWrapper();
             RivalRow = PlayerMaze.StartRow;
             RivalColumn = PlayerMaze.StartCol;
             IsLoading = false;
@@ -90,18 +104,22 @@ namespace MazeGame.Model.ClientServerModel
                     break;
             }
 
-            if (DidWin(RivalRow, RivalRow, 2))
-            {
+            //if (DidWin(RivalRow, RivalRow, 2))
+            //{
               
-            }
+            //}
         }
 
         public void JoinGame(string gameName)
         {
-            if(OnJoinningGame != null)
-            {
-                OnJoinningGame.Invoke(this, gameName);
-            }
+            IsLoading = true;
+            var query = string.Format(JOIN_COMMAND, gameName);
+            _client.Broadcast(query);
+        }
+        public void StartGame(string gameName, int rows, int cols)
+        {
+            var query = string.Format(START_COMMAND, gameName, rows, cols);
+            _client.Broadcast(query);
         }
     }
 }

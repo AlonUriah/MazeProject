@@ -22,9 +22,7 @@ namespace MazeGame.View
     {
         private ISinglePlayerViewModel vm;
         private Window parent;
-
         
-
         public SinglePlayerGame(ISinglePlayerViewModel vm, Window parent)
         {
             InitializeComponent();
@@ -32,7 +30,7 @@ namespace MazeGame.View
             this.vm = vm;
             this.player.DataContext = this.vm;
             this.KeyDown += this.GameSurface_KeyDown;
-            this.vm.GameStatusChanged += this.OnStatusChanged;
+            this.vm.OnGameStatusChanged += this.OnStatusChanged;
         }
 
         private void OnStatusChanged(object sender, Nullable<int> status)
@@ -72,7 +70,7 @@ namespace MazeGame.View
                     this.player.Key = "left";
                     break;
                 default:
-                    break;
+                    return;
             }
             this.vm.PlayerMoved("player", this.player.Key);
         }
@@ -95,14 +93,12 @@ namespace MazeGame.View
             if (this.btn_solve.IsEnabled)
                 this.vm.Close();
             this.Close();
-            this.parent.Show();
         }
 
         private void wdw_single_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (this.btn_solve.IsEnabled)
                 this.vm.Close();
-            this.parent.Show();
         }
         // Awaiting for maze behavior
 

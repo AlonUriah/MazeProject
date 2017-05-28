@@ -128,8 +128,11 @@ namespace MazeGame.Model.ClientServerModel
                 {
                     try
                     {
+                        Nullable<char> c = null;
+                        string response = string.Empty;
                         // Read a buffer from the stream
-                        string response = _streamReader.ReadToEnd();
+                        while ((c = (char)(_streamReader.Read())) != '|' && !_streamReader.EndOfStream)
+                            response += c;
 
                         // If it is null, raise an exception.
                         if (response == null || string.IsNullOrWhiteSpace(response))
@@ -142,6 +145,7 @@ namespace MazeGame.Model.ClientServerModel
                         if (!string.IsNullOrWhiteSpace(response))
                         {
                             OnResponseReceived?.Invoke(response);
+                            _streamReader.BaseStream.Flush();
                         }
                     }
                     catch (Exception)
@@ -181,14 +185,16 @@ namespace MazeGame.Model.ClientServerModel
                     // Use the Connect method to reach the remote host.
                     Connect();
                     // Start a background task, which is listening to the server.
-                    Task.Factory.StartNew(Listen);
+                    
                 }
                 /*
                  * After we are sure we got a connection,
                  * we write the command to the server.
                  */
                 _streamWriter.WriteLine(query);
-                _streamWriter.Flush();   
+                _streamWriter.Flush();
+
+                Task.Factory.StartNew(Listen);
                 return LOADING_CODE;
             }
             catch (Exception)
@@ -209,6 +215,17 @@ namespace MazeGame.Model.ClientServerModel
         {
             _connected = false;
             _tcpClient.Close();
+        }
+
+        public void ClearEventHandlers()
+        {
+            if (OnResponseReceived == null) return;
+
+            Delegate[] handlers = OnResponseReceived.GetInvocationList();
+            foreach(var handler in handlers)
+            {
+                OnResponseReceived -= (handler as ResponseReceivedHandler);
+            }
         }
     }
 }

@@ -4,7 +4,6 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System;
 using System.Threading;
-using System.ComponentModel;
 
 namespace MazeGame.Model.ClientServerModel
 {
@@ -30,10 +29,11 @@ namespace MazeGame.Model.ClientServerModel
 
         public ClientServerSingleplayerModel() : base ()
         {
-
+            OnGameReceived += GameReceived;
         }
         public ClientServerSingleplayerModel(Client client) : base (client)
         {
+            OnGameReceived += GameReceived;
         }
         
         public int CreateNewGame(string gameName, int mazeRows, int mazeCols)
@@ -145,29 +145,27 @@ namespace MazeGame.Model.ClientServerModel
 
             OnSolutionReceived?.Invoke(this, jObject["Solution"].ToString());
         }
-
-        [Obsolete]
-        protected virtual void UpdateMaze(object sender, string gameJason)
+        public virtual void GameReceived(object sender, string gameJason)
         {
-            try
-            {
-                var gameObj = JObject.Parse(gameJason);
-                PlayerMaze = gameObj.ToMazeWrapper();
-                PlayerRow = PlayerMaze.StartRow;
-                PlayerColumn = PlayerMaze.StartCol;
+            //try
+            //{
+            //    var gameObj = JObject.Parse(gameJason);
+            //    PlayerMaze = gameObj.ToMazeWrapper();
+            //    PlayerRow = PlayerMaze.StartRow;
+            //    PlayerColumn = PlayerMaze.StartCol;
 
-                /*if (OnGameReceived != null)
-                {
-                    OnGameReceived.Invoke(this, gameJason);
-                }*/
+            //    /*if (OnGameReceived != null)
+            //    {
+            //        OnGameReceived.Invoke(this, gameJason);
+            //    }*/
 
-                IsLoading = false;
-            }
-            catch (JsonReaderException e)
-            {
-                //Alert
-                IsLoading = true;
-            }
+            //    IsLoading = false;
+            //}
+            //catch (JsonReaderException e)
+            //{
+            //    //Alert
+            //    IsLoading = true;
+            //}
         }
     }
 }

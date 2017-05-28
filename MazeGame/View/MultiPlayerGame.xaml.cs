@@ -30,7 +30,7 @@ namespace MazeGame.View
             this.parent = parent;
             this.DataContext = this.vm;
             this.KeyDown += this.GameSurface_KeyDown;
-            this.vm.GameStatusChanged += this.OnStatusChanged;
+            //this.vm.O += this.OnStatusChanged;
         }
         private void GameSurface_KeyDown(object sender, KeyEventArgs e)
         {
@@ -49,7 +49,7 @@ namespace MazeGame.View
                     this.player.Key = "left";
                     break;
                 default:
-                    break;
+                    return;
             }
             this.vm.PlayerMoved("player", this.player.Key);
         }

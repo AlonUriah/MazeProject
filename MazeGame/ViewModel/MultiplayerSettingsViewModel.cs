@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using MazeGame.Model.Interfaces;
 using MazeGame.ViewModel.Interfaces;
 using MazeGame.Model;
-using MazeGame.Model.ClientServerModel;
 using System.Collections.ObjectModel;
 using System;
 

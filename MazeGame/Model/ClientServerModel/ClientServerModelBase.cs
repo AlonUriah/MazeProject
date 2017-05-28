@@ -10,8 +10,8 @@ namespace MazeGame.Model.ClientServerModel
 
         public ClientServerModelBase()
         {
-            string ipAddressStr = ConfigurationManager.AppSettings["IpAddress"];
-            string portStr = ConfigurationManager.AppSettings["PortNumber"];
+            string ipAddressStr = ConfigurationManager.AppSettings["IP"];
+            string portStr = ConfigurationManager.AppSettings["Port"];
             _client = new Client(ipAddressStr, portStr);
             _client.OnResponseReceived += ResponseReceived;
         }
@@ -19,6 +19,7 @@ namespace MazeGame.Model.ClientServerModel
         public ClientServerModelBase(Client client)
         {
             _client = client;
+            _client.ClearEventHandlers();
             _client.OnResponseReceived += ResponseReceived;
         }
 

@@ -39,5 +39,13 @@ namespace MazeGame.Common
                 return null;
             }
         }
+
+        public static string TrimJasonEnd(this string jasonString)
+        {
+            int index = jasonString.LastIndexOf('}');
+            if (index < 0) return jasonString;
+
+            return jasonString.Substring(0, index + 1);
+        }
     }
 }

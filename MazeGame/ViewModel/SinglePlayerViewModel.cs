@@ -45,6 +45,7 @@ namespace MazeGame.ViewModel
         public event SolutionReceivedHandler OnSolutionReceived;
         public event GenerateGameHandler OnGameReceived;
         public event PlayerMovedHandler OnPlayerMoved;
+        public event GameStatusChangedHandler OnGameStatusChanged;
 
         public MazeWrapper PlayerMaze
         {

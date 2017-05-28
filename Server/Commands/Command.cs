@@ -37,7 +37,7 @@ namespace Server
         {
             NetworkStream ns = client.Connection.GetStream();
             StreamWriter sw = new StreamWriter(ns);
-            sw.WriteLine(response);
+            sw.WriteLine(response + "|");
             sw.Flush();
         }
         /*

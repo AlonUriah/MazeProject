@@ -38,18 +38,13 @@ namespace MazeGame.View
 
         private void btn_join_Click(object sender, RoutedEventArgs e)
         {
-            this.multi_vm.MazeName = this.game_properties.txt_gamename.Text;
-            this.multi_vm.MazeRowsStr = this.game_properties.txt_rows.Text;
-            this.multi_vm.MazeColsStr = this.game_properties.txt_cols.Text;
-
-
             IMultiPlayerViewModel vm = this.multi_vm.JoinGame();
 
-            //while (vm.Status != 1) { }
+            //while(vm.Status == 0) { }
 
-            if (vm == null)
+            if(vm == null || vm.Status == 2)
             {
-                MessageBox.Show("Invalid input!");
+                MessageBox.Show("Could not join game!");
                 return;
             }
 
@@ -57,7 +52,6 @@ namespace MazeGame.View
             next.Show();
             this.parent = null;
             this.Close();
-            
         }
 
         private void btn_startgame_Click(object sender, RoutedEventArgs e)
@@ -66,16 +60,15 @@ namespace MazeGame.View
             this.multi_vm.MazeRowsStr = this.game_properties.txt_rows.Text;
             this.multi_vm.MazeColsStr = this.game_properties.txt_cols.Text;
 
-
             IMultiPlayerViewModel vm = this.multi_vm.StartGame();
-
-           // while (vm.Status != 1) { }
-
+            
             if (vm == null)
             {
                 MessageBox.Show("Invalid input!");
                 return;
             }
+
+            //while (vm.Status != 1) { }
 
             Window next = new MultiPlayerGame(vm, this.parent);
             next.Show();
